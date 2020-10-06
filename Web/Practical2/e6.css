@@ -1,0 +1,16 @@
+ul {
+    background-color: darkred;
+    color: white;
+    list-style: none;
+    padding: 10;
+}
+
+li {
+    display: inline;
+    padding: 10;
+    font-family: trebuchet ms;
+}
+
+li:hover {
+    background-color: #550000
+}

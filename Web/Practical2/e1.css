@@ -1,0 +1,26 @@
+h1 {
+    color: darkblue;
+    font-family: Impact, Charcoal, sans-serif;
+    text-decoration: underline;
+    text-decoration-color: mediumvioletred;
+    letter-spacing: 10px
+}
+
+h2 {
+    color: dimgray;
+    font-style: italic
+}
+
+h3 {
+    color: black;
+    font-family: Impact, Charcoal, sans-serif;
+    text-decoration: underline;
+    text-decoration-color: red;
+    letter-spacing: -1px
+}
+
+em {
+    color: dimgray;
+    font-style: italic
+}
+
