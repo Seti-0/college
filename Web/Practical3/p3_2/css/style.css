@@ -1,0 +1,203 @@
+/* General site styling */
+
+
+body {
+	background-color: #fff;
+	color: #777;
+	font: normal 15px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+p {
+	line-height: 20px;
+	margin-bottom: 20px;
+}
+
+h1 {
+	font-family: 'Crete Round', serif;
+	font-weight: bold;
+	color: #444;
+	font-size: 45px;
+	margin-bottom: 20px;
+}
+
+h2 {
+	font-weight: 300;
+	color: #444;
+	font-size: 55px;
+	text-transform: uppercase;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+h3 {
+	font-size: 30px;
+	color: #444;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+h4 {
+	font-size: 24px;
+	color: #444;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+
+h5 {
+	font-size: 15px;
+	color: #444;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+a {
+	text-decoration: none;
+	color: #444;
+}
+
+a:hover {
+	color: #02b8dd;
+}
+
+strong {
+	font-weight: bold;
+}
+
+small {
+	font-size: 13px;
+	color: #777;
+	font-style: italic;
+}
+
+.clear {
+	clear: both;
+}
+
+.wrapper {
+	margin: 0 auto;
+	padding: 0 10px;
+	width: 940px;
+}
+
+
+/* Header specific styling */
+
+
+header {
+}
+
+header h1 {
+    display: inline-block;
+}
+
+header h1 .color {
+    color: blueviolet;
+}
+
+header nav {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+}
+
+header nav ul li {
+}
+
+header nav ul li a {
+}
+
+
+/* Hero section specific styling */
+
+#hero-image {
+}
+
+#hero-image h2 {
+}
+
+
+/* Button styling */
+
+.button-1 {
+}
+
+.button-1:hover {
+}
+
+
+/* Features area styling */
+
+#features ul {
+}
+
+#features ul li {
+}
+
+#features ul li.feature-1 {
+}
+
+#features ul li.feature-2 {
+}
+
+#features ul li.feature-3 {
+}
+
+
+/* Primary content styling */
+
+#primary-content {
+}
+
+#primary-content h3 {
+}
+
+#primary-content a img {
+}
+
+
+/* Secondary content styling */
+
+#secondary-content {
+}
+
+#secondary-content article {
+}
+
+#secondary-content article:first-child {
+}
+
+#secondary-content article .overlay {
+}
+
+
+/* Article area styling */
+
+article h4 {
+}
+
+.more-link {
+}
+
+.more-link:hover {
+}
+
+
+/* Footer area styling */
+
+footer {
+}
+
+#footer-info {
+}
+
+#footer-links {
+}
+
+#footer-links ul {
+}
+
+#footer-links ul li {
+}
