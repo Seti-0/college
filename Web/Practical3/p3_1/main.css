@@ -1,0 +1,62 @@
+body{
+    background-color: darkgrey;
+}
+
+#main {
+    background-color: lightgrey;
+    font-family: trebuchet ms;
+    text-align: center;
+}
+
+header {
+    text-align: center;
+    color: darkred;
+    font-size: 24;
+    font-weight: bold;
+    margin: 10
+}
+
+nav {
+    background-color: darkred;
+    color: white;
+    display: inline-block;
+    margin: auto;
+    align-self: center;
+    
+    /* Avoid whitespace in the html creating unexpected
+    spacing */
+    font-size: 0;
+}
+
+li {
+    display: inline-block;
+    padding: 3 30 3 30;
+    font-size: 20
+}
+
+nav li:hover {
+    background-color: indianred;
+}
+
+section {
+    background-color: #666;
+    color: white;
+    padding: 30 0 30 0;
+    margin: 20 20 0 20
+}
+
+section h1 {
+    font-size: 43
+}
+
+section h2 {
+    color: darkred;
+}
+
+section li:hover {
+    background-color: #777;
+}
+
+footer {
+    color: darkred;
+}
