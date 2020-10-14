@@ -79,7 +79,9 @@ small {
 .wrapper {
 	margin: 0 auto;
 	padding: 0 10px;
-	width: 940px;
+	width: 200px;
+    background-color: forestgreen;
+    overflow: hidden;
 }
 
 
@@ -95,6 +97,10 @@ header h1 {
 
 header h1 .color {
     color: blueviolet;
+}
+
+header div {
+    
 }
 
 header nav {
@@ -161,6 +167,8 @@ header nav ul li a {
 /* Secondary content styling */
 
 #secondary-content {
+        position: absolute;
+    right: 0;
 }
 
 #secondary-content article {
