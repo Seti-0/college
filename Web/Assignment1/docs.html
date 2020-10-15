@@ -1,13 +1,10 @@
 <html>
-    
     <head>
         <title>Planetary</title>
         <link rel=stylesheet href="reset.css"/>
         <link rel=stylesheet href="main.css"/>
     </head>
-    
-    <body>
-        
+    <body>  
         <nav>
             <a id="home" href="index.html">Home</a>
             <a id="features" href="features.html">Features</a>
@@ -15,10 +12,62 @@
             <a id="showcase" href="showcase.html">Showcase</a>
             <a id="about" href="about.html">About Us</a>
         </nav>
-        
-        <section id="docs">
-            
+        <section id="start">  
+            <h1>Getting Started</h1>
+            <div class="indent-small">
+                <h2>Python Installation</h2>
+            </div>
+            <p>
+                There are many ways to install python. The recommended method
+                here is to install Miniconda, which can be found 
+                <a href="https://docs.conda.io/en/latest/miniconda.html">here</a>.
+            </p>
+            <p>
+                Note: Anaconda includes everything in Miniconda, and so can be used instead
+                if it is installed. Also, a new miniconda installation will not interfere with 
+                an existing ordinary python installation.
+            </p>
+            <p>Once Miniconda is installed, open up terminal and create an empty environment.</p>
+            <div class="code-cell">
+                <code>conda create -n my_environment</code>
+                <br>
+                <code>conda activate my_environment</code>
+            </div>
+            <p>Install the version of python supported by your version of Planetary:</p>
+            <div class="indent-medium">
+                 <table>
+                    <tr><th>Planetary</th><th>Python</th></tr>
+                    <tr><td>v1.14</td><td>v2.7.3</td></tr>
+                    <tr><td>v2.4.3</td><td>v2.7.3</td></tr>
+                    <tr><td>v3.2</td><td>v3.6.8</td></tr>
+                    <tr><td>v4.0.1</td><td>v3.7.7</td></tr>
+                </table>
+            </div>
+            <p>
+                Notice in particular that the latest version of planetary does
+                not necesarily play well with the latest python version.
+            </p>
+            <div class="code-cell">
+                <code>
+                    conda install python=3.7.7
+                </code>
+            </div>
+            <p>
+                Install Planetary with pip:
+            </p>
+            <div class="code-cell">
+                <code>
+                    pip install planetary2d
+                </code>
+            </div>
+            <p>
+                If all went well, the following command should launch a test app:
+            </p>
+            <div class="code-cell">
+                <code>
+                    python -m planetary2d.examples.ninja
+                </code>
+            </div>
         </section>
-        
     </body>
 </html>

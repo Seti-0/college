@@ -2,8 +2,8 @@
     BASIC
 */
 
-/* This behaviour was removed by reset.css */
 b {
+    color: white;
     font-weight: bold;
 }
 
@@ -11,8 +11,9 @@ p {
     margin: 15;
 }
 
-p a {
+p a, p a:visited {
     color: #4f90d0;
+    text-decoration: none;
 }
 
 p a:hover {
@@ -23,10 +24,42 @@ blockquote {
     margin: 10;
 }
 
+.code-cell {
+    display: inline-block;
+    background-color: black;
+    border: 2px solid #244;
+    padding: 5 30;
+    font-family: monospace;
+    font-size: 15;
+    line-height: 140%;
+    text-align: left;
+    margin: 0 30;
+}
+
+.code-cell code::before {
+    content: "> ";
+    color: #889
+}
+
 body {
     font-family: trebuchet ms;
-    color: white;
+    color: #ddE0e2;
     background-color: #002255;
+    text-align: center;
+}
+
+/* This is are little classes that provides an
+indent which, unlike margin, can shrink */
+
+.indent-small {
+    position: relative;
+    max-width: min(250px, 100%);
+    text-align: center;
+}
+
+.indent-medium {
+    position: relative;
+    max-width: min(400px, 100%);
     text-align: center;
 }
 
@@ -132,7 +165,55 @@ blockquote::after {
 }
 
 
+/*
+    DOCUMENTATION
+*/
 
+#start {
+    text-align: left;
+    margin: 20;
+    padding: 10;
+    color: #eeee;
+    background-color: #00000044;
+    border-radius: 24;
+    display: inline-block;
+    overflow: auto;
+}
+
+#start h1 {
+    color: #5599ff;
+    font-size: 40;
+    padding: 10;
+}
+
+#start h2 {
+    color: #ffe680;
+    font-size: 20;
+}
+
+#start table {
+    display: inline-block;
+    border: 2px solid #5555ff;
+    margin: 10;
+}
+
+th, td {
+    border: 2px solid #5599ff
+}
+
+th {
+    color: #ffe680;
+    padding: 20;
+}
+
+td {
+    padding: 10;
+    text-align: center;
+}
+
+tr:last-child {
+    color:#ff4a60;
+}
 
 
 
