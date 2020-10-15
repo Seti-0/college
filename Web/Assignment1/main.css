@@ -1,0 +1,139 @@
+/*
+    BASIC
+*/
+
+/* This behaviour was removed by reset.css */
+b {
+    font-weight: bold;
+}
+
+p {
+    margin: 15;
+}
+
+p a {
+    color: #4f90d0;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+blockquote {
+    margin: 10;
+}
+
+body {
+    font-family: trebuchet ms;
+    color: white;
+    background-color: #002255;
+    text-align: center;
+}
+
+/*
+    NAVIGATION BAR
+*/
+
+nav {
+    color: white;
+    background-color: #6f7c91;
+    border-radius: 20px;
+    overflow: auto;
+    padding: 0 50 0 50;
+    display: inline-block;
+    margin: 40 20 20 20;
+}
+
+nav a {
+    color:white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10 20 10 20;
+    margin: 0 10 0 10;
+    border-bottom: solid 3px;
+}
+
+nav a:hover {
+    background-color: #b5bbc7;
+}
+
+/* Give each nav element its own colour */
+
+#home {
+    border-bottom-color: #ff4a60;
+}
+
+#features {
+    border-bottom-color: #dd55ff;
+}
+
+#docs {
+    border-bottom-color: #5599ff;
+}
+
+#showcase {
+    border-bottom-color: #ffe680;
+}
+
+#about {
+    border-bottom-color: #22f521;
+}
+
+/*
+    HOME PAGE
+*/
+
+#intro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20
+}
+
+#intro-text {
+    max-width: max(300px, 30%);
+    text-align:start;
+    margin: 20 
+}
+
+.quote {
+    color: lightblue;
+    display: inline-block;
+    max-width: max(200px, 20%);
+    margin: 20;
+    position: relative;
+    text-align: end;
+}
+
+/* I learnt this before/after bit from
+https://codepen.io/jimmycow/pen/LmjVaz */
+
+blockquote::before {
+    position: absolute;
+    top: 0;
+    left: -15;
+    content: "“";
+    font-size: 50;
+    color: deepskyblue;
+}
+
+blockquote::after {
+    position: absolute;
+    bottom: 0;
+    right: -18;
+    content: "”";
+    font-size: 50;
+    color: deepskyblue;
+}
+
+#quotes figcaption {
+    color: darkgrey
+}
+
+
+
+
+
+
+
