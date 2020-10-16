@@ -92,23 +92,23 @@ nav a:hover {
 
 /* Give each nav element its own colour */
 
-#home {
+#nav-home {
     border-bottom-color: #ff4a60;
 }
 
-#features {
+#nav-features {
     border-bottom-color: #dd55ff;
 }
 
-#docs {
+#nav-docs {
     border-bottom-color: #5599ff;
 }
 
-#showcase {
+#nav-showcase {
     border-bottom-color: #ffe680;
 }
 
-#about {
+#nav-about {
     border-bottom-color: #22f521;
 }
 
@@ -131,7 +131,7 @@ nav a:hover {
 }
 
 .quote {
-    color: lightblue;
+    color: lightgrey;
     display: inline-block;
     max-width: max(200px, 20%);
     margin: 20;
@@ -148,7 +148,7 @@ blockquote::before {
     left: -15;
     content: "“";
     font-size: 50;
-    color: deepskyblue;
+    color: #5599ff;
 }
 
 blockquote::after {
@@ -157,7 +157,7 @@ blockquote::after {
     right: -18;
     content: "”";
     font-size: 50;
-    color: deepskyblue;
+    color: #5599ff;
 }
 
 #quotes figcaption {
@@ -173,7 +173,7 @@ blockquote::after {
     text-align: left;
     margin: 20;
     padding: 10;
-    color: #eeee;
+    color: #dee0e3;
     background-color: #00000044;
     border-radius: 24;
     display: inline-block;
@@ -215,6 +215,64 @@ tr:last-child {
     color:#ff4a60;
 }
 
+/*
+    SHOWCASE
+*/
 
+#showcase {
+    text-align: center;
+    margin: 20;
+    padding: 10;
+    color: #dee0e3;
+    background-color: #00000044;
+    border-radius: 24;
+    display: block;
+    overflow: auto;
+}
 
+#showcase h1 {
+    color: #ffe680;
+    font-size: 40;
+    padding: 10;
+    margin-bottom: 30;
+}
 
+#showcase img {
+    width: 300;
+    border-radius: 20px 20px 0 0 
+}
+
+#showcase a {
+    color: white;
+    text-decoration-color: white;
+}
+
+#showcase figure {
+    background-color: black;
+    margin: 10;
+    display: inline-block;
+    padding: 5;
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: center;
+}
+
+#showcase figcaption {
+    padding: 5;
+}
+
+/*
+
+I was originally going to use a flex layout
+to help with image layout, but it turns out
+the natural ordering of the in;ine-blocks suits
+my purposes just fine.
+
+#showcase .image-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+*/
