@@ -24,28 +24,33 @@ blockquote {
     margin: 10;
 }
 
-.code-cell {
-    display: inline-block;
-    background-color: black;
-    border: 2px solid #244;
-    padding: 5 30;
-    font-family: monospace;
-    font-size: 15;
-    line-height: 140%;
-    text-align: left;
-    margin: 0 30;
-}
-
-.code-cell code::before {
-    content: "> ";
-    color: #889
-}
-
 body {
     font-family: trebuchet ms;
-    color: #ddE0e2;
+    color: #dee0e3;
     background-color: #002255;
     text-align: center;
+    background-image: url(images/bg.svg);
+    background-repeat: no-repeat;
+}
+
+.main-container {
+    margin: 20;
+    padding: 10;
+    background-color: #00000044;
+    border-radius: 25px;
+    text-align: center;
+    overflow: auto;
+}
+
+.title {
+    font-size: 40;
+    padding: 10;  
+    color: #ffe680;
+    margin-bottom: 30;
+}
+
+.subtitle {
+    font-size: 20;
 }
 
 /* This is are little classes that provides an
@@ -108,7 +113,7 @@ nav a:hover {
     border-bottom-color: #ffe680;
 }
 
-#nav-about {
+#nav-news {
     border-bottom-color: #22f521;
 }
 
@@ -121,13 +126,16 @@ nav a:hover {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: 20
+    margin: 20;
 }
 
 #intro-text {
     max-width: max(300px, 30%);
     text-align:start;
-    margin: 20 
+    margin: 30;
+    padding: 10;
+    background-color: #00000044;
+    border-radius: 25px;
 }
 
 .quote {
@@ -142,7 +150,7 @@ nav a:hover {
 /* I learnt this before/after bit from
 https://codepen.io/jimmycow/pen/LmjVaz */
 
-blockquote::before {
+.quote blockquote::before {
     position: absolute;
     top: 0;
     left: -15;
@@ -151,7 +159,7 @@ blockquote::before {
     color: #5599ff;
 }
 
-blockquote::after {
+.quote blockquote::after {
     position: absolute;
     bottom: 0;
     right: -18;
@@ -160,58 +168,105 @@ blockquote::after {
     color: #5599ff;
 }
 
-#quotes figcaption {
+.quote figcaption {
     color: darkgrey
 }
 
+/*
+    FEATURES
+*/
+
+.feature-container {
+    display: inline-grid;
+    grid-template-columns: 
+        [images] 320px 
+        [text] 1fr;
+    grid-template-rows: 
+        [engine] 1fr 
+        [editor] 1fr 
+        [networking] 1fr;
+    grid-auto-flow: row;
+    align-items: center;
+    
+}
+
+.feature-container img {
+    justify-self: right;
+    width: 300px;
+    margin: 30 0;
+}
+
+.feature-text {
+    margin: 40;
+    justify-self: left;
+    text-align: left;
+}
+
+.feature-text h2 {
+    color: #ffe680;
+    font-size: 25;
+    margin: 5;
+}
+
+.feature-text ul {
+    list-style: disc;
+}
+
+.feature-text li {
+    margin: 10;
+}
 
 /*
     DOCUMENTATION
 */
 
-#start {
-    text-align: left;
-    margin: 20;
-    padding: 10;
-    color: #dee0e3;
-    background-color: #00000044;
-    border-radius: 24;
-    display: inline-block;
-    overflow: auto;
-}
-
-#start h1 {
+#getting-started .subtitle {
     color: #5599ff;
-    font-size: 40;
-    padding: 10;
+    margin-bottom: 30;
 }
 
-#start h2 {
-    color: #ffe680;
-    font-size: 20;
+#getting-started article {
+    text-align: left;
 }
 
-#start table {
+.code-cell {
+    display: inline-block;
+    background-color: black;
+    border: 2px solid #244;
+    padding: 5 30;
+    font-family: monospace;
+    font-size: 15;
+    line-height: 140%;
+    text-align: left;
+    margin: 0 30;
+}
+
+.code-cell code::before {
+    content: "> ";
+    color: #889
+}
+
+.version-table {
     display: inline-block;
     border: 2px solid #5555ff;
     margin: 10;
 }
 
-th, td {
+.version-table th, td {
     border: 2px solid #5599ff
 }
 
-th {
+.version-table th {
     color: #ffe680;
     padding: 20;
 }
 
-td {
+.version-table td {
     padding: 10;
     text-align: center;
 }
 
-tr:last-child {
+.version-table tr:last-child {
     color:#ff4a60;
 }
 
@@ -219,35 +274,20 @@ tr:last-child {
     SHOWCASE
 */
 
-#showcase {
-    text-align: center;
-    margin: 20;
-    padding: 10;
-    color: #dee0e3;
-    background-color: #00000044;
-    border-radius: 24;
-    display: block;
-    overflow: auto;
-}
-
-#showcase h1 {
-    color: #ffe680;
-    font-size: 40;
-    padding: 10;
-    margin-bottom: 30;
-}
-
-#showcase img {
+.image-gallery img {
     width: 300;
     border-radius: 20px 20px 0 0 
 }
 
-#showcase a {
+.image-gallery a {
     color: white;
-    text-decoration-color: white;
+    /* The line below is important - else the whitespace in the html
+    around the figure, which is treated as a space, would be underlined,
+    which then makes little marks like underscores show up in the gallery */
+    text-decoration: none;
 }
 
-#showcase figure {
+.image-gallery figure {
     background-color: black;
     margin: 10;
     display: inline-block;
@@ -257,18 +297,17 @@ tr:last-child {
     text-align: center;
 }
 
-#showcase figcaption {
+.image-gallery figcaption {
     padding: 5;
 }
 
 /*
-
 I was originally going to use a flex layout
 to help with image layout, but it turns out
-the natural ordering of the in;ine-blocks suits
-my purposes just fine.
+the natural ordering of the inline-blocks suits
+my purposes just fine, including w.r.t. reactivity.
 
-#showcase .image-container {
+.image-gallery {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -276,3 +315,58 @@ my purposes just fine.
     justify-content: space-around;
 }
 */
+
+/*
+    NEWS
+*/
+
+.news-container {
+    display: inline-grid;
+    grid-template-columns: 130px 2fr;
+    grid-auto-columns: auto;
+    grid-auto-flow: row;
+    align-items: top;
+}
+
+.news-meta {
+    margin: 40 0;
+    background-color: #6e7c90;
+    border-radius: 20px 0 0 20px;
+}
+
+
+.news-meta img {
+    max-width: 30;
+    padding: 20;
+    margin: 10;
+    background-color: #446698;
+    border-radius: 20px;
+}
+
+.news-author {
+    
+}
+
+.news-date {
+    font-size: 14;
+    color: #6e7c90
+}
+
+.news-content {
+    text-align: left;
+    margin: 40 0;
+    background-color: #6e7caa66;
+    border-radius: 0 20px 20px 0;
+    
+}
+
+.news-content h2 {
+    font-size: 30;
+    margin: 20;
+    color: #ffe680
+}
+
+.news-content video {
+    max-width: 80%;
+    margin: 10 20;
+}

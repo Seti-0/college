@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <title>Planetary</title>
         <link rel=stylesheet href="reset.css"/>
@@ -8,73 +9,73 @@
         <nav>
             <a id="nav-home" href="index.html">Home</a>
             <a id="nav-features" href="features.html">Features</a>
-            <a id="nav-docs" href="docs.html">Documentation</a>
+            <a id="nav-docs" href="docs.html">Getting Started</a>
             <a id="nav-showcase" href="showcase.html">Showcase</a>
-            <a id="nav-about" href="about.html">About Us</a>
+            <a id="nav-news" href="news.html">News</a>
         </nav>
-        <section id="start">  
-            <h1>Getting Started</h1>
-            <div class="indent-small">
-                <h2>Python Installation</h2>
-            </div>
-            <p>
-                There are many ways to install python. The recommended method
-                here is to install Miniconda, which can be found 
-                <a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank">here</a>.
-            </p>
-            <p>
-                Note: Anaconda includes everything in Miniconda, and so can be used instead
-                if it is installed. Also, a new miniconda installation will not interfere with 
-                an existing ordinary python installation.
-            </p>
-            <p>Once Miniconda is installed, open up terminal and create an empty environment.</p>
-            <div class="code-cell">
-                <code>conda create -n my_environment</code>
-                <br>
-                <code>conda activate my_environment</code>
-            </div>
-            <p>Install the version of python supported by your version of Planetary:</p>
-            <div class="indent-medium">
-                 <table>
-                    <tr><th>Planetary</th><th>Python</th></tr>
-                    <tr><td>v1.14</td><td>v2.7.3</td></tr>
-                    <tr><td>v2.4.3</td><td>v2.7.3</td></tr>
-                    <tr><td>v3.2</td><td>v3.6.8</td></tr>
-                    <tr><td>v4.0.1</td><td>v3.7.7</td></tr>
-                </table>
-            </div>
-            <p>
-                Notice in particular that the latest version of planetary does
-                not necesarily play well with the latest python version.
-            </p>
-            <div class="code-cell">
-                <code>
-                    conda install python=3.7.7
-                </code>
-            </div>
-            <p>
-                Install Planetary with pip:
-            </p>
-            <div class="code-cell">
-                <code>
-                    pip install planetary2d
-                </code>
-            </div>
-            <p>
-                If all went well, the following command should launch a test app:
-            </p>
-            <div class="code-cell">
-                <code>
-                    python -m planetary2d.examples.ninja
-                </code>
-            </div>
-            <p>
-                And that's it! To learn about how to use the engine, see the
-                <a href="https://github.com/Seti-0/dummy/wiki">wiki</a>. The 
-                <a href="https://github.com/Seti-0/dummy/issues">issues</a> page is a good place to
-                check if something is going wrong. Finally, join the community on 
-                <a href="https://github.com/Seti-0/dummy/wiki/Discord">Discord</a>!
-            </p>
+        <section id="getting-started" class="main-container">
+            <h1 class="title">Getting Started</h1>
+            <h2 class="subtitle">Python Installation</h2>
+            <article>
+                <p>
+                    There are many ways to install python. The recommended method
+                    here is to install Miniconda, which can be found 
+                    <a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank">here</a>.
+                </p>
+                <p>
+                    Note: Anaconda includes everything in Miniconda, and so can be used instead
+                    if it is installed. Also, a new miniconda installation will not interfere with 
+                    an existing ordinary python installation.
+                </p>
+                <p>Once Miniconda is installed, open up terminal and create an empty environment.</p>
+                <div class="code-cell">
+                    <code>conda create -n my_environment</code>
+                    <br>
+                    <code>conda activate my_environment</code>
+                </div>
+                <p>Install the version of python supported by your version of Planetary:</p>
+                <div class="indent-medium">
+                     <table class="version-table">
+                        <tr><th>Planetary</th><th>Python</th></tr>
+                        <tr><td>v1.14</td><td>v2.7.3</td></tr>
+                        <tr><td>v2.4.3</td><td>v2.7.3</td></tr>
+                        <tr><td>v3.2</td><td>v3.6.8</td></tr>
+                        <tr><td>v4.0.1</td><td>v3.7.7</td></tr>
+                    </table>
+                </div>
+                <p>
+                    Notice in particular that the latest version of planetary does
+                    not necesarily play well with the latest python version.
+                </p>
+                <div class="code-cell">
+                    <code>
+                        conda install python=3.7.7
+                    </code>
+                </div>
+                <p>
+                    Install Planetary with pip:
+                </p>
+                <div class="code-cell">
+                    <code>
+                        pip install planetary2d
+                    </code>
+                </div>
+                <p>
+                    If all went well, the following command should launch a test app:
+                </p>
+                <div class="code-cell">
+                    <code>
+                        python -m planetary2d.examples.ninja
+                    </code>
+                </div>
+                <p>
+                    And that's it! To learn about how to use the engine, see the
+                    <a href="https://github.com/Seti-0/dummy/wiki" target="_blank">wiki</a>. The 
+                    <a href="https://github.com/Seti-0/dummy/issues" target="_blank">issues</a> page is a good place to
+                    check if something is going wrong. Finally, join the community on 
+                    <a href="https://github.com/Seti-0/dummy/wiki/Discord" target="_blank">Discord</a>!
+                </p>
+            </article>
         </section>
     </body>
 </html>

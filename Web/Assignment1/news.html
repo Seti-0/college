@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Planetary</title>
+        <link rel=stylesheet href="reset.css"/>
+        <link rel=stylesheet href="main.css"/>
+    </head>
+    <body>
+        <nav>
+            <a id="nav-home" href="index.html">Home</a>
+            <a id="nav-features" href="features.html">Features</a>
+            <a id="nav-docs" href="docs.html">Getting Started</a>
+            <a id="nav-showcase" href="showcase.html">Showcase</a>
+            <a id="nav-news" href="news.html">News</a>
+        </nav>
+        <section id="news" class="main-container">
+            <h1 class="title">News</h1>
+            <div class="news-container">
+                <div class="news-meta">
+                    <img src="images/person.svg" alt="Vague vector profile picture">
+                    <div class="news-author">Kieran Cosson</div>
+                    <div class="news-date">Oct 16th</div>
+                </div>
+                <article class="news-content">
+                    <h2>Unreal Improvement</h2>
+                    <p>This is not strictly about Planetary, but I enjoyed this video enough
+                    to want to put it here...</p>
+                    <video controls>
+                        <source src="videos/unreal.mp4" type="video/mp4"/>
+                        Video not supported
+                    </video>
+                </article>
+                <div class="news-meta">
+                    <img src="images/person.svg" alt="Vague vector profile picture">
+                    <div class="news-author">Kieran Cosson</div>
+                    <div class="news-date">Sep 12th</div>
+                </div>
+                <article class="news-content">
+                    <h2>4.0 Release!</h2>
+                    <p>
+                        I am happy to annouce the latest release! After a long, long beta.
+                    </p>
+                    <p>
+                        This milestone sees a major rework of the package system, introducing a 
+                        new in-editor marketplace to ease sharing of plugins. Other goals included
+                        performance and reducing object allocation in the main rendering loop, improvements
+                        to coroutines, and a new GLSL editor.
+                    </p>
+                    <p>
+                        See the <a href="https://github.com/Seti-0/dummy/wiki/Changes" target="_blank">wiki</a> for a full list of improvements!
+                    </p>
+                </article>
+            </div>
+        </section>
+    </body>
+</html>
