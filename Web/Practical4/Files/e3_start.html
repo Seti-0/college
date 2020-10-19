@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<img id="image" src="images/smiley.gif" width="304" height="228"
+     onmousedown="showSmiley()" onmouseup="showMountain()">
+    
+<script>
+    document.getElementById("image").src = "images/pic_mountain.jpg";
+    
+    var mountain = true;
+    
+    function swap() {
+        
+        var image = document.getElementById("image");
+        
+        console.log(mountain);
+        
+        if (mountain) {
+            image.src = "images/smiley.gif";
+            mountain = false;
+            
+        }
+        else {
+            image.src = "images/pic_mountain.jpg";
+            mountain = true;
+        }
+    }
+    
+    function showSmiley() {
+        document.getElementById("image").src = "images/smiley.gif";
+    }
+    
+    
+    function showMountain() {
+        document.getElementById("image").src = "images/pic_mountain.jpg";
+    }
+</script>
+
+</body>
+</html>

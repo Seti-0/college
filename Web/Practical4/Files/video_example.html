@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+    <style>
+
+        .button {
+            display: inline-block;
+            background-color: #ddd;
+            padding: 1em;
+        }
+        
+        .button:hover {
+            background-color: #eee
+        }
+        
+        .button:active {
+            background-color: #fee
+        }
+    
+    </style>   
+    <script>
+        function Play() {
+            var video = document.getElementById("video");
+            video.play();
+        }
+        
+        function Pause() {
+            var video = document.getElementById("video");
+            video.pause();
+        }
+        function ToggleMute() {
+            var video = document.getElementById("video");
+            video.muted = !video.muted;
+        }
+        
+    </script>
+</head>
+<body> 
+
+<video width="400" id="video">
+  <source src="videos/mov_bbb.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+
+<p>
+Video courtesy of 
+<a href="http://www.bigbuckbunny.org/" target="_blank">Big Buck Bunny</a>.
+</p>
+    
+<div class="button" onclick="Play()">Play</div>
+<div class="button" onclick="Pause()">Pause</div>
+<div class="button" onclick="ToggleMute()">Mute</div>
+
+</body> 
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<img id="image" src="images/smiley.gif" onmousedown="mouseClicked()" onmouseup="mouseReleased()" width="304" height="228">
+
+<script>
+document.getElementById("image").src = "images/pic_mountain.jpg"; 
+    
+function mouseClicked() {
+    document.getElementById('image').src = "images/smiley.gif";
+}
+
+    function mouseReleased() {
+    document.getElementById('image').src = "images/pic_mountain.jpg";
+}
+</script>
+
+</body>
+</html>
