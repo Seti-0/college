@@ -2,17 +2,17 @@
     BASIC
 */
 
-b {
+strong {
     color: white;
     font-weight: bold;
 }
 
 p {
-    margin: 15;
+    margin: 1em;
 }
 
 p a, p a:visited {
-    color: #4f90d0;
+    color: #6faaff;
     text-decoration: none;
 }
 
@@ -21,50 +21,59 @@ p a:hover {
 }
 
 blockquote {
-    margin: 10;
+    margin: 0.5rem;
 }
+
+/*
+    W.r.t. general structure, pages except
+    for the home page have an outermost "content" container,
+    with a "main-container" as a direct child.
+
+    The outer one manages size, the inner one provides a background,
+    border radius, etc.
+*/
 
 body {
     font-family: trebuchet ms;
     color: #dee0e3;
     background-color: #002255;
     text-align: center;
-    background-image: url(images/bg.svg);
-    background-repeat: no-repeat;
+}
+
+.content {
+    width: min(100%, 60em);
+    margin: 0 auto;
 }
 
 .main-container {
-    margin: 20;
-    padding: 10;
+    margin: 1em;
+    padding: 0.5em;
     background-color: #00000044;
-    border-radius: 25px;
+    border-radius: 1.5em;
     text-align: center;
     overflow: auto;
 }
 
 .title {
-    font-size: 40;
-    padding: 10;  
+    font-size: 3em;  
     color: #ffe680;
-    margin-bottom: 30;
+    margin-bottom: 0.5em;
 }
 
 .subtitle {
-    font-size: 20;
+    font-size: 1.5em;
 }
 
-/* This is are little classes that provides an
-indent which, unlike margin, can shrink */
+/* 
+    This is intended to be a small indent
+    that can collapse when space is limited.
 
-.indent-small {
-    position: relative;
-    max-width: min(250px, 100%);
-    text-align: center;
-}
+    It's currently only used by the table.
+*/
 
 .indent-medium {
     position: relative;
-    max-width: min(400px, 100%);
+    max-width: min(25em, 100%);
     text-align: center;
 }
 
@@ -75,19 +84,19 @@ indent which, unlike margin, can shrink */
 nav {
     color: white;
     background-color: #6f7c91;
-    border-radius: 20px;
+    border-radius: 1em;
     overflow: auto;
-    padding: 0 50 0 50;
+    padding: 0 2.5em;
     display: inline-block;
-    margin: 40 20 20 20;
+    margin: 2em 1em 1em 1em;
+    font-size: 1.3em;
 }
 
 nav a {
     color:white;
     text-decoration: none;
     display: inline-block;
-    padding: 10 20 10 20;
-    margin: 0 10 0 10;
+    padding: 0.5em 1em 0.5em 1em;
     border-bottom: solid 3px;
 }
 
@@ -126,23 +135,23 @@ nav a:hover {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: 20;
+    margin: 1em;
 }
 
 #intro-text {
-    max-width: max(300px, 30%);
+    max-width: max(17em, 30%);
     text-align:start;
-    margin: 30;
-    padding: 10;
+    margin: 1.5em;
+    padding: 0.5em;
     background-color: #00000044;
-    border-radius: 25px;
+    border-radius: 1.5em;
 }
 
 .quote {
     color: lightgrey;
     display: inline-block;
-    max-width: max(200px, 20%);
-    margin: 20;
+    max-width: max(14em, 20%);
+    margin: 2em;
     position: relative;
     text-align: end;
 }
@@ -153,18 +162,18 @@ https://codepen.io/jimmycow/pen/LmjVaz */
 .quote blockquote::before {
     position: absolute;
     top: 0;
-    left: -15;
+    left: -1.5rem;
     content: "“";
-    font-size: 50;
+    font-size: 4em;
     color: #5599ff;
 }
 
 .quote blockquote::after {
     position: absolute;
-    bottom: 0;
-    right: -18;
+    bottom: -0.2em;
+    right: -1.6rem;
     content: "”";
-    font-size: 50;
+    font-size: 4em;
     color: #5599ff;
 }
 
@@ -179,7 +188,7 @@ https://codepen.io/jimmycow/pen/LmjVaz */
 .feature-container {
     display: inline-grid;
     grid-template-columns: 
-        [images] 320px 
+        [images] 20em 
         [text] 1fr;
     grid-template-rows: 
         [engine] 1fr 
@@ -192,20 +201,20 @@ https://codepen.io/jimmycow/pen/LmjVaz */
 
 .feature-container img {
     justify-self: right;
-    width: 300px;
-    margin: 30 0;
+    width: 18em;
+    margin: 1em 0;
 }
 
 .feature-text {
-    margin: 40;
+    margin: 3em;
     justify-self: left;
     text-align: left;
 }
 
 .feature-text h2 {
     color: #ffe680;
-    font-size: 25;
-    margin: 5;
+    font-size: 1.5em;
+    margin: 0.33em;
 }
 
 .feature-text ul {
@@ -213,7 +222,7 @@ https://codepen.io/jimmycow/pen/LmjVaz */
 }
 
 .feature-text li {
-    margin: 10;
+    margin: 1em;
 }
 
 /*
@@ -222,7 +231,7 @@ https://codepen.io/jimmycow/pen/LmjVaz */
 
 #getting-started .subtitle {
     color: #5599ff;
-    margin-bottom: 30;
+    margin-bottom: 1em;
 }
 
 #getting-started article {
@@ -233,23 +242,23 @@ https://codepen.io/jimmycow/pen/LmjVaz */
     display: inline-block;
     background-color: black;
     border: 2px solid #244;
-    padding: 5 30;
+    padding: 0.25em 1.5em;
     font-family: monospace;
-    font-size: 15;
+    font-size: 1.15em;
     line-height: 140%;
     text-align: left;
-    margin: 0 30;
+    margin: 0 2em;
 }
 
 .code-cell code::before {
     content: "> ";
-    color: #889
+    color: #889;
 }
 
 .version-table {
     display: inline-block;
     border: 2px solid #5555ff;
-    margin: 10;
+    margin: 0.5em;
 }
 
 .version-table th, td {
@@ -258,11 +267,11 @@ https://codepen.io/jimmycow/pen/LmjVaz */
 
 .version-table th {
     color: #ffe680;
-    padding: 20;
+    padding: 1.3em;
 }
 
 .version-table td {
-    padding: 10;
+    padding: 0.75em;
     text-align: center;
 }
 
@@ -274,9 +283,19 @@ https://codepen.io/jimmycow/pen/LmjVaz */
     SHOWCASE
 */
 
+.image-gallery figure {
+    background-color: black;
+    margin: 1em;
+    display: inline-block;
+    padding: 0.25em;
+    border-radius: 1.5em;
+    overflow: hidden;
+    text-align: center;
+}
+
 .image-gallery img {
-    width: 300;
-    border-radius: 20px 20px 0 0 
+    width: 16em;
+    border-radius: 1.4em 1.4em 0 0 
 }
 
 .image-gallery a {
@@ -287,18 +306,8 @@ https://codepen.io/jimmycow/pen/LmjVaz */
     text-decoration: none;
 }
 
-.image-gallery figure {
-    background-color: black;
-    margin: 10;
-    display: inline-block;
-    padding: 5;
-    border-radius: 20px;
-    overflow: hidden;
-    text-align: center;
-}
-
 .image-gallery figcaption {
-    padding: 5;
+    padding: 0.25em;
 }
 
 /*
@@ -322,51 +331,46 @@ my purposes just fine, including w.r.t. reactivity.
 
 .news-container {
     display: inline-grid;
-    grid-template-columns: 130px 2fr;
+    grid-template-columns: 8em 1fr;
     grid-auto-columns: auto;
     grid-auto-flow: row;
-    align-items: top;
 }
 
 .news-meta {
-    margin: 40 0;
+    margin: 2em 0;
     background-color: #6e7c90;
-    border-radius: 20px 0 0 20px;
+    border-radius: 1.5em 0 0 1.5em;
 }
 
 
 .news-meta img {
-    max-width: 30;
-    padding: 20;
-    margin: 10;
+    max-width: 2rem;
+    padding: 1em;
+    margin: 0.5em;
     background-color: #446698;
-    border-radius: 20px;
-}
-
-.news-author {
-    
+    border-radius: 2rem;
 }
 
 .news-date {
-    font-size: 14;
-    color: #6e7c90
+    font-size: 0.8em;
+    color: #aaa;
 }
 
 .news-content {
     text-align: left;
-    margin: 40 0;
+    margin: 2em 0;
     background-color: #6e7caa66;
-    border-radius: 0 20px 20px 0;
+    border-radius: 0 1.5em 1.5em 0;
     
 }
 
 .news-content h2 {
-    font-size: 30;
-    margin: 20;
+    font-size: 1.5em;
+    margin: 1em;
     color: #ffe680
 }
 
 .news-content video {
     max-width: 80%;
-    margin: 10 20;
+    margin: 0.5em 1em;
 }
