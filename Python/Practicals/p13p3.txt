@@ -1,0 +1,26 @@
+a)
+
+If the line 'print(print_max())' replaces the line 
+'print_max()', the program will run as normal, but also
+print out 'None' at the end.
+
+This is because print_max() has no return statement and
+so is returning 'None' to the print statement.
+
+b)
+
+The print_max statement isn't run, and nothing happens.
+
+This is because the name of the function (without the brackets)
+returns an object representing the function, instead of invoking
+it. Then, nothing is done with that object.
+
+c)
+
+The print_max function doesn't run, instead,
+'<function print_max at 0x7f20fab89670>'
+is printed.
+
+Again, the object representing the function was 
+retrieved. This time, its string representation was
+printed.
