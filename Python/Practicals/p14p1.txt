@@ -1,0 +1,31 @@
+I used the timeit module to test times, with the count set
+to 10,000 iterations. I've appended the results to the end
+of this file. The times shown are the average time per function
+execution, not the total time!
+
+The code used to produce this output can be found in
+p14p1.py
+
+The conclusion is that the iterative method is 
+about three times faster than the recursive method.
+(Except in the case of 1 factorial)
+
+==== input: 1 ====
+recursive: 0.000003s
+iterative: 0.000002s
+==== input: 10 ====
+recursive: 0.000009s
+iterative: 0.000003s
+==== input: 50 ====
+recursive: 0.000031s
+iterative: 0.000007s
+==== input: 100 ====
+recursive: 0.000060s
+iterative: 0.000014s
+==== input: 500 ====
+recursive: 0.000317s
+iterative: 0.000098s
+==== input: 978 ====
+recursive: 0.000797s
+iterative: 0.000306s
+====================

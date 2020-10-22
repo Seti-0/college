@@ -1,0 +1,8 @@
+The recursive function gives a stack overflow error
+starting with an input of 988 on my machine.
+
+The iterative function hasn't given me an error 
+yet. 100,000 runs quite quickly, 1,000,000 runs but
+it looks like it will take a very long time. I imagine
+the iterative version could run until the program runs
+out of memory.
