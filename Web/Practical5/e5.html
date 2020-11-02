@@ -1,0 +1,43 @@
+<style>
+
+    table {
+        margin:10;
+        border-collapse: collapse;
+    }
+
+    td {
+        text-align: center;
+        border: 1px solid black;
+        padding:20;
+    }
+
+</style>
+
+<div id="table-container"></div>
+
+<script>
+
+    var a = [
+        [1,2,1,24],
+        [8,11,9,4],
+        [7,0,7,27],
+        [7,4,28,14],
+        [3,10,26,7]
+    ]
+
+    text = "<table>"
+    for (ai of a) {
+        text += "<tr>"
+        console.log(ai)
+        for (aij of ai) {
+            text += "<td>"
+            text += aij
+            text += "</td>"
+        }
+        text += "</tr>"
+    }
+    text += "</table>"
+
+    document.getElementById("table-container").innerHTML = text
+
+</script>

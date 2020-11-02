@@ -1,0 +1,51 @@
+<body>
+
+    <p>The answer is <span id="ans">(None)</span></p>
+
+    <script>
+        
+        /*
+            A little bit of math:
+            
+            3 + 6 + 9 + 12 + ... + 3n
+            = 3 (1 + 2 + ... + n)
+            = (3/2) (n) (n + 1)
+        
+            n here is the biggest n such that 3n < 1000
+            i.e. n = floor(1000/3)
+                                                       
+            The same can be done for 5.
+                                                       
+            So the answer is:
+            n = floor(1000/3)
+            m = floor(1000/5) - 1
+            total = (3/2)(n)(n+1) + (5/2)(m)(m+1)  
+            
+            (Note the minus 1 on m is because 1000
+            is a precise multiple of 5, and we were
+            told not to include 1000)
+            
+            But wait! There are duplicates here
+            We've counted all duplicates of 15 twice
+            (Arguable this is what the q asks for, but
+            it does not match the answer given)
+            
+            To correct this:
+            
+            n = floor(1000/15)
+            total -= (15/2)(n)(n+1)
+        */
+                                                       
+        var n = Math.floor(1000/3)
+        var m = Math.floor(1000/5) - 1
+        var total = ((3/2)*n*(n+1)) + ((5/2)*m*(m+1))
+        
+        n = Math.floor(1000/15)
+        total -= (15/2)*n*(n+1)
+        
+        ans = document.getElementById("ans")
+        ans.innerHTML = total
+        
+    </script>
+    
+</body>

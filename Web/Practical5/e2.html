@@ -1,0 +1,27 @@
+<body>
+
+    <h3>Output</h3>
+    
+    <p id="out"></p>
+
+    <script>
+    
+        function print(message) {
+            out = document.getElementById("out")
+            out.innerHTML += "<br>" + message
+        }
+        
+        for(i = 0; i < 16; i++) {
+            message = i.toString()
+            if (i % 2 == 1) {
+                message += " - odd"
+            }
+            else {
+                message += " - even"
+            }
+            print(message)
+        }
+        
+    </script>
+
+</body>

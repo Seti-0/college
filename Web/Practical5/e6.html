@@ -1,0 +1,53 @@
+<style>
+
+    div {
+        overflow: auto;
+    }
+    
+    table {
+        border-collapse: collapse;  
+        border: 1px solid black;
+    }
+    
+    td {
+        padding: 10;
+    }
+    
+</style>
+<div id="container"></div>
+<script>
+
+    var marks = {
+        "David":80,
+        "Vinoth":77,
+        "Divya":88,
+        "Ishitha":95,
+        "Thomas":68
+    }
+    
+    function getGrade(mark) {
+        if (mark < 60) return "F"
+        else if (mark < 70) return "D"
+        else if (mark < 80) return "C"
+        else if (mark < 90) return "B"
+        else return "A"
+    }
+    
+    text = "<table>"
+    text += "<th><td>Marks</td><td>Grade</td></th>"
+    
+    for (name in marks) {
+        mark = marks[name]
+        grade = getGrade(mark)
+        
+        text += "<tr><td>" + name + "</td>"
+        text += "<td>" + mark + "</td>"
+        text += "<td>" + grade + "</td><tr>"
+    }
+    
+    text += "</table>"
+    
+    container = document.getElementById("container")
+    container.innerHTML = text
+
+</script>

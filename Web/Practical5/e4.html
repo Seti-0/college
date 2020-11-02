@@ -1,0 +1,59 @@
+<body>
+    <form action="javascript:add()">
+        <label for="a">A:</label>
+        <input type=text name=a id=a>
+        <label for="b">B:</label>
+        <input type=text name=b id=b>
+        <input type=submit value=add>
+    </form>
+    <p>Output: <span id="out">(None)</span></p>
+    <p id="error" style="color:red;display:none">
+        Error: <span id="error_out">(None)</span>
+    </p>
+    <script>
+        
+        function clearError() {
+            error = document.getElementById("error")
+            error.style.display = "none"
+        }
+        
+        function writeError(message) {
+            error = document.getElementById("error")
+            out = document.getElementById("error_out")
+            
+            out.innerHTML = message
+            error.style.display = "block"
+        }
+        
+        function add() {
+            
+            clearError()
+            
+            a = document.getElementById("a").value
+            b = document.getElementById("b").value
+            
+            if (isNaN(a)) {
+                writeError("A is not a number")
+                return
+            }
+            else if (isNaN(b)) {
+                writeError("B is not a number")
+                return
+            }
+            
+            a = parseFloat(a)
+            b = parseFloat(b)
+            
+            if (a > b) {
+                answer = a
+            }
+            else {
+                answer = b
+            }
+            
+            out = document.getElementById("out")
+            out.innerHTML = answer
+            
+        }
+    </script>
+</body>
