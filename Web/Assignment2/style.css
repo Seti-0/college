@@ -1,0 +1,31 @@
+body {
+    background-color: #55DDFF;
+}
+
+.main {
+    margin: 2em;
+}
+
+.toolbar {
+    background-color: #5599FF;
+    padding: 2em;
+}
+
+.item {
+    background-color: white;
+    margin: 1em;
+    padding: 1em;
+    border: 3px solid #0aF;
+}
+
+.timetable {
+    background-color: #D5F6FF;
+    margin: 0 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.inspector {
+    background-color: #5599FF;
+    height: 400em;
+}

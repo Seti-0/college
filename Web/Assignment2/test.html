@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Schedule</title>
+        <link rel=stylesheet href="reset.css">
+        <link rel=stylesheet href="style.css">
+        <script>
+            function handler() {
+                console.log(JSON.parse(client.responseText))
+            }
+
+            var client = new XMLHttpRequest();
+            client.open("GET", "scheduling.json");
+            client.onload = handler;
+            client.send();
+        </script>
+    </head>
+    <body>
+        <div class=main>
+            <div class=toolbar>
+                <p>
+                    Test Text
+                </p>
+            </div>
+            <section class=timetable>
+                <div class=item>
+                    <p>This is an item</p>
+                </div>
+                <div class=item>
+                    <p>This is another item</p>
+                </div>
+            </section>
+            <section class=inspector>
+                <p>
+                    Some inspection text                    
+                </p>
+            </section>
+        </div>
+    </body>
+</html>
