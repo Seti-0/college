@@ -1,0 +1,60 @@
+<script>
+    function handler() {
+        
+        data = JSON.parse(client.responseText);
+        
+        console.log(data);
+        
+        timetable = document.getElementById("timetable");
+        
+        for (const day of data) {
+            const content = createDay(day);
+            timetable.innerHTML += content;
+        }
+    }
+
+    const client = new XMLHttpRequest();
+    client.open("GET", "scheduling.json");
+    client.onload = handler;
+    client.send();
+    
+    function createDay(data) {
+        
+        var content = "<li class=day>";
+        
+        content += "<h2 class=day-title>";
+        content += data.date + " - " + data.day;
+        content += "</h2>";
+        
+        for (const slotID in data.slots) {
+            
+            const slot = data.slots[slotID];
+            
+            content += "<div class=slot><h3 class=time>";
+            content += slot.time;
+            content += "</h3>";
+            
+            content += "<ul class=sessions>";
+            
+            for (const session of slot.sessions) {
+                
+                content += "<li class=session>";
+                content += "<h4>" + session["title"] + "</h4>";
+                content += "<p class=location>" + session["room"] + "</p>";
+                content += "</li>"
+                
+            }
+            
+            content += "</ul></div>"
+        }
+        
+        content += "</li>"
+        
+        return content;
+    }
+    
+</script>
+<link rel=stylesheet href="reset.css">
+<link rel=stylesheet href="style.css">
+<ol class=timetable id=timetable>
+</ol>

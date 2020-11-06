@@ -1,0 +1,60 @@
+<link rel=stylesheet href="reset.css">
+<link rel=stylesheet href="style.css">
+<script>
+    function handler() {
+        console.log(JSON.parse(client.responseText))
+    }
+
+    var client = new XMLHttpRequest();
+    client.open("GET", "scheduling.json");
+    client.onload = handler;
+    client.send();
+    
+</script>
+<ol>
+    <li class=day>
+        <h2 class=day-title>Monday</h2>
+        <div class=slot>
+            <h3 class=time>
+                11:00
+                <br>
+                -
+                <br>
+                12:00
+            </h3>
+            <ul class=sessions>
+                <li class=session>
+                    <h4>Workshop: HCI at End of Life & Beyond</h4>
+                    <p class=location>304a</p>
+                </li>
+                <li class=session>
+                    <h4>Workshop: HCI at End of Life & Beyond</h4>
+                    <p class=location>304a</p>
+                </li>
+                <li class=session>
+                    <h4>Workshop: HCI at End of Life & Beyond</h4>
+                    <p class=location>304a</p>
+                </li>
+            </ul>
+        </div>
+        <div class=slot>
+            <h3>
+                13:00
+            </h3>
+            <ul class=sessions>
+                <li>
+                    <p class="title">Workshop: HCI at End of Life & Beyond</p>
+                    <p class="location">304a</p>
+                </li>
+                <li>
+                    <p class="title">Workshop: HCI at End of Life & Beyond</p>
+                    <p class="location">304a</p>
+                </li>
+                <li>
+                    <p class="title">Workshop: HCI at End of Life & Beyond</p>
+                    <p class="location">304a</p>
+                </li>
+            </ul>
+        </div>
+    </li>
+</ol>

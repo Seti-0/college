@@ -1,0 +1,127 @@
+<style>
+    
+    body {
+      font-family: georgia;
+      width: 75%;
+      margin: auto;
+      background-color: #ccc;
+    }
+    
+    .day {
+        margin: 1em;
+    }
+    
+    .day-header {
+      position: sticky;
+      background: #f83d23;
+      overflow: hidden;
+      top: 0;
+      text-align: center;
+      box-shadow: 0 0 6px #000;
+      color: white;
+      z-index: 1;
+    }
+    
+    .time {
+      float: left;
+      position: sticky;
+      top: 0;
+      padding: 1em;
+      color: #777;
+      font-size: 1.3em;
+    }
+    
+    .slot, .slot-hidden {
+        background: #FDF6F3;
+        border-left: solid 20px #268BD2;
+    }
+    
+    .content {
+        border-top: solid 5px;
+        border-bottom: solid 5px;
+    }
+    
+    .content {
+        color: black;
+    }
+    
+    #one {
+        border-color: #268BD2
+    }
+    
+    #one > .content {
+        height: 200px;
+                border-color: #268BD2;
+    }
+    
+    #two {
+        border-color: #69C33B;
+    }
+    
+    #two > .content {
+        height: 400px;
+                border-color: #69C33B;
+    }
+    
+    #three {
+        border-color: #268BD2;
+    }
+    
+    #three > .content {
+        height: 800px;
+                border-color: #268BD2;
+    }
+    
+</style>
+
+    <div class=day>
+        <div class="day-header">
+        Monday
+        </div>
+        <div id=one class=slot-hidden>
+            <div class=time>
+                11:00
+            </div>
+            <div class=content>
+            
+                
+            
+            </div>
+        </div>  
+        <div id=two class=slot-hidden>
+            <div class=time>
+                12:00
+            </div>
+            <div class=content></div>
+        </div>  
+        <div id=three class=slot-hidden>
+            <div class=time>
+                13:00
+            </div>
+            <div class=content></div>
+        </div>
+    </div>
+
+    <div class=day>
+        <div class="day-header">
+            Tuesday
+        </div>
+        <div id=one class=slot>
+            <div class=time>
+                18:00
+            </div>
+            <div class=content></div>
+        </div>  
+        <div id=two class=slot>
+            <div class=time>
+                19:00
+            </div>
+            <div class=content></div>
+        </div>  
+        <div id=three class=slot>
+            <div class=time>
+                20:00
+            </div>
+            <div class=content></div>
+        </div>
+    </div>
