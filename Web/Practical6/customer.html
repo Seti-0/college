@@ -1,0 +1,68 @@
+<h1>Personal Details:</h1>
+<p>
+    First Name: <span id=firstname>(Unknown)</span> <br>
+    Second Name: <span id=secondname>(Unknown)</span> <br>
+    Age: <span id=age>(Unknown)</span>
+</p>
+<h1>Address</h1>
+<p>
+    Street: <span id=street>(Unknown)</span> <br>
+    City: <span id=city>(Unknown)</span> <br>
+    State: <span id=state>(Unknown)</span> <br>
+    Postal Code: <span id=postalcode>(Unknown)</span>
+</p>
+<h1>Contact Details</h1>
+<table id=contact>
+    <tr><th>Type</th><th>Number</th></tr>
+</table>
+
+<style>
+    table {
+        border-collapse: collapse;
+        border: solid 2px #ddd;
+    }
+    
+    td, th {
+        padding: 1em;
+    }
+    
+    td:nth-child(2n) {
+        background: #eee;
+    }
+    
+    th {
+        color: #eee;
+        background-color: yellowgreen;
+    }
+</style>
+
+<script>
+
+    const client = new XMLHttpRequest();
+    client.open("GET", "customerData.json");
+    client.onload = function() {
+        
+        const data = JSON.parse(client.responseText);
+        
+        document.getElementById("firstname").innerHTML = data.firstName;
+        document.getElementById("secondname").innerHTML = data.lastName;
+        document.getElementById("age").innerHTML = data.age;
+        
+        document.getElementById("street").innerHTML = data.address.streetAddress;
+        document.getElementById("city").innerHTML = data.address.city;
+        document.getElementById("state").innerHTML = data.address.state;
+        document.getElementById("postalcode").innerHTML = data.address.postalCode;
+        
+        var content = "";
+        
+        for (const number of data.phoneNumber) {
+            content += "<tr><td>" + number.type + "</td>";
+            content += "<td>" + number.number + "</td>";
+        }
+        
+        const table = document.getElementById("contact");
+        table.innerHTML += content;
+    }
+    client.send();
+
+</script>

@@ -1,0 +1,34 @@
+<table id=main></table>
+<style>
+
+    table {
+        border: 2px solid blue;
+        background: #eee;
+        border-collapse: collapse;
+    }
+    
+    td {
+        border: 1px dashed #777;
+        padding: 1em;
+    }
+    
+</style>
+<script>
+
+    const client = new XMLHttpRequest();
+    client.open("GET", "colorData.json");
+    client.onload = function () {
+
+        const data = JSON.parse(client.responseText);
+        var content = "";
+        
+        for (const color of data.colorsArray) {
+            content += "<tr><td>" + color.colorName + "</td>";
+            content += "<td>" + color.hexValue + "</td></tr>";
+        }
+        
+        const timetable = document.getElementById("main");
+        timetable.innerHTML = content;
+    }
+    client.send();
+</script>

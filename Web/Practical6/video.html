@@ -1,0 +1,50 @@
+<h1 id=title>No Title</h1>
+<p id=desc>No summary</p>
+<iframe id=frame>Unable to display video</iframe>
+<p>
+    View on YouTube: <a id=link>link</a>
+</p>
+<h2>Stats</h2>
+<p>
+    Ratings: <span id=ratings>0</span><br>
+    Reviews: <span id=reviews>0</span><br>
+    Views: <span id=views>0</span>
+</p>
+
+<style>
+    iframe {
+        width: 100%;
+        height: 50%
+    }
+</style>
+
+<script>
+    
+    var client = new XMLHttpRequest();
+    client.open("GET", "youtube.json");
+    
+    client.onload = populatePage;
+    
+    client.send();
+
+    function populatePage(){
+        
+        console.log(client);
+        
+        var data = JSON.parse(client.responseText).data.items[0];
+        
+        document.getElementById("title").innerHTML = data.title;
+        document.getElementById("desc").innerHTML = data.description;
+        
+        var embedLink = "https://www.youtube.com/embed/" + data.id + "/";
+        document.getElementById("frame").src = embedLink;
+        
+        document.getElementById("link").href = data.player.default;
+        
+        document.getElementById("ratings").innerHTML = data.ratingCount;
+        document.getElementById("reviews").innerHTML = data.commentCount;
+        document.getElementById("views").innerHTML = data.viewCount;
+        
+    }
+    
+</script>
