@@ -1,0 +1,198 @@
+body {
+    font-family: georgia;
+    background-color: #ccc;
+    margin: auto;
+}
+
+h1,h2,h3 {
+    font-weight: bold;
+}
+
+.initial-container {
+    display: grid;
+    grid-template:
+        "loading" 1fr
+        "toolbar" auto
+        "." 1fr
+        /1fr;
+    align-items: center;
+    height: 100vh;
+}
+
+.timetable-container {
+    display: grid;
+    grid-template:
+        "toolbar" auto
+        "timetable" 1fr
+        / 1fr;
+    height: 100vh;
+}
+
+#loading-info {
+    
+    /* Show when loading begins */
+    visibility: hidden;
+
+    grid-area: loading;
+    justify-self: center;
+    color: #777;
+}
+
+#toolbar {
+    
+    /* Show when loadnig is complete */
+    visibility: hidden;
+    
+    grid-area: toolbar;
+    text-align: center;
+    background-color: #303B9E;
+    box-shadow: 0 0 6px black;
+    color: #eee;
+}
+
+.toolbar-item {
+    display: inline-block;
+    margin: 0.4em 1em;
+}
+
+.toolbar-item select,button {
+    color: white;
+    border: 3px solid #232D85;
+    background-color: #303B9E;
+    margin: 0 1em;
+    padding: 0.5em;
+}
+
+.toolbar-item button:hover {
+    background-color: #505CD3;
+}
+
+#filter-selection {
+    display: none;
+}
+
+.timetable-wrapper {
+    overflow: auto;
+    grid-area: timetable;
+}
+
+.timetable {
+    color: #777;
+}
+
+.day-title {
+    font-size: 1.2em;
+    text-align: center;
+
+    color: white;
+    background: #f83d23;
+    box-shadow: 0 0 6px #000;
+
+    padding: 0.5em;
+    margin:0;
+
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.slot  {
+    background: #FDF6F3;
+    border: solid #268BD2;
+    border-width: 5px 20px;
+
+    /*
+        Keep the time in a margin to the 
+       left, so that it can move with the user 
+    */
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-auto-columns: auto 1fr;
+    grid-template-areas: 
+        "time sessions"
+        ".    sessions";
+    align-items: center;
+}
+
+.slot:hover {
+    border-color: #69C33B;
+}
+
+.time {
+    position: sticky;
+    top: 1.2em;
+    
+    padding: 1em;
+    font-size: 1.3em;
+
+    grid-area: "time";
+    align-self: flex-start;
+    
+    text-align: center;
+}
+
+.sessions {
+    text-align: start;
+    grid-area: "sessions";
+    columns: 1;
+    column-gap: 0;
+}
+
+.session {
+    display: inline-block;
+    border: 2px solid #268BD2;
+    margin: 0.4em 0.4em;
+    //padding: 0.4em 1em;
+}
+
+.session:hover {
+    border-color: #69C33B; 
+}
+
+.session-header {
+    margin: 1em;
+}
+
+.session-title {
+    margin: 0;
+    padding: 0;
+}
+
+.session:hover .session-title {
+    text-decoration: underline;
+}
+
+.session-info {
+    margin-top: 0.3em;
+    font-size: 0.9em;
+}
+
+.session-location {
+    color: #cbd;
+}
+
+.session-time {
+    color: #abd;
+}
+
+.session-type {
+    color: #bbc;
+}
+
+.submissions {
+    display: none;
+    background-color: #ddd;
+    padding: 1em;
+    border-top: 2px solid #bbb;
+}
+
+.submissions-title {
+    font-size: 0.8em;
+    font-style: italic;
+    color: #aaa;
+    margin-bottom: 0.5em;
+}
+
+.submission {
+    margin: 2em 0;
+}

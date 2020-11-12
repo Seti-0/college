@@ -1,60 +1,60 @@
-<script>
-    function handler() {
-        
-        data = JSON.parse(client.responseText);
-        
-        console.log(data);
-        
-        timetable = document.getElementById("timetable");
-        
-        for (const day of data) {
-            const content = createDay(day);
-            timetable.innerHTML += content;
-        }
-    }
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel=stylesheet href="reset.css">
+        <link rel=stylesheet href="main.css">
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <div id=root-container class=initial-container>
+            <div id=loading-info>
+                <p>
+                    Loading scheduling data: 
+                    <span id=data-load-progress>0</span>%
+                </p>
+            </div>
+            <div id=toolbar>
+                <ul class=datetime-selection>
+                    <li class=toolbar-item>
+                        <label for=date>Date:</label>
+                        <select name=date id=datepicker></select>
+                    </li>
+                    <li class=toolbar-item>
+                        <label for=time>Time:</label>
+                        <select name=time id=timepicker>
+                            <option value=any>Any</option>
+                        </select>
+                    </li>
+                    <li id=show-timetable-item class=toolbar-item>
+                        <button id=show-timetable onclick="showTimetable()">Show Timetable</button>
+                    </li>
+                    <li class=toolbar-item>
+                        <ul id=filter-selection>
+                            <li class="toolbar-item filter-item">
+                                <label for=filter-all>All</label>
+                                <input type=radio id=filter-all value=all name=filter checked=true>
+                            </li>  
+                            <li class="toolbar-item filter-item">
+                                <label for=filter-papers>Papers</label>
+                                <input type=radio id=filter-papers value=papers name=filter>
+                            </li>
+                            <li class="toolbar-item filter-item">
+                                <label for=filter-other>Other</label>
+                                <input type=radio id=filter-other value=other name=filter>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class=timetable-wrapper>    
+                <ol id=timetable></ol>
+            </div>
+        </div>
+    </body>
+</html>
 
-    const client = new XMLHttpRequest();
-    client.open("GET", "scheduling.json");
-    client.onload = handler;
-    client.send();
+<script>
     
-    function createDay(data) {
-        
-        var content = "<li class=day>";
-        
-        content += "<h2 class=day-title>";
-        content += data.date + " - " + data.day;
-        content += "</h2>";
-        
-        for (const slotID in data.slots) {
-            
-            const slot = data.slots[slotID];
-            
-            content += "<div class=slot><h3 class=time>";
-            content += slot.time;
-            content += "</h3>";
-            
-            content += "<ul class=sessions>";
-            
-            for (const session of slot.sessions) {
-                
-                content += "<li class=session>";
-                content += "<h4>" + session["title"] + "</h4>";
-                content += "<p class=location>" + session["room"] + "</p>";
-                content += "</li>"
-                
-            }
-            
-            content += "</ul></div>"
-        }
-        
-        content += "</li>"
-        
-        return content;
-    }
+    
     
 </script>
-<link rel=stylesheet href="reset.css">
-<link rel=stylesheet href="style.css">
-<ol class=timetable id=timetable>
-</ol>

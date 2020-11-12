@@ -1,40 +1,30 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Schedule</title>
-        <link rel=stylesheet href="reset.css">
-        <link rel=stylesheet href="style.css">
-        <script>
-            function handler() {
-                console.log(JSON.parse(client.responseText))
-            }
+<script>
+    
+client = new XMLHttpRequest();
+client.open("GET", "scheduling.json");
+client.send();
+client.onload = test;
 
-            var client = new XMLHttpRequest();
-            client.open("GET", "scheduling.json");
-            client.onload = handler;
-            client.send();
-        </script>
-    </head>
-    <body>
-        <div class=main>
-            <div class=toolbar>
-                <p>
-                    Test Text
-                </p>
-            </div>
-            <section class=timetable>
-                <div class=item>
-                    <p>This is an item</p>
-                </div>
-                <div class=item>
-                    <p>This is another item</p>
-                </div>
-            </section>
-            <section class=inspector>
-                <p>
-                    Some inspection text                    
-                </p>
-            </section>
-        </div>
-    </body>
-</html>
+function test() {
+ 
+    data = JSON.parse(client.responseText);
+ 
+    set = new Set();
+    
+    for (const day of data) {
+        console.log(day);
+        for (const slotID in day.slots) {
+            for (const session of day.slots[slotID].sessions) {
+                for (const submission of session.submissions) {
+                    for (const property in submission) {
+                        set.add(property);  
+                    }
+                }   
+            }
+        }
+    }
+    
+    console.log(set);
+}
+
+</script>
