@@ -1,0 +1,277 @@
+/*
+
+    COMMON
+
+ */
+
+a {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+
+body {
+    background-color: lightgray;
+}
+
+.debug {
+    display: none;
+}
+
+.empty {
+    font-style: italic;
+    color: grey;
+    padding: 2em;
+    text-align: center;
+}
+
+/*
+
+    NAVIGATION
+
+ */
+
+nav {
+    background-color: white;
+    border-collapse: collapse;
+    text-align: center;
+    grid-area: header;
+    border-bottom: 0.2rem #c4d2e2 solid;
+}
+
+.nav-bottom-border {
+    border-bottom: 0.36rem lightslategray solid;
+}
+
+nav li {
+    display: inline-block;
+    border-left: lightslategray 1px solid;
+    font-size: 1.2em;
+    width: 10em;
+}
+
+nav li:last-child {
+    border-right: lightslategray 1px solid;
+}
+
+nav a {
+    display: inline-block;
+    padding: 2em;
+    color: lightslategray;
+    text-decoration: underline;
+}
+
+nav a:hover, nav a:active {
+    font-weight: bold;
+    color: lightslategray;
+}
+
+/*
+
+    FOOTER
+
+ */
+
+.footer {
+    text-align: center;
+    padding: 1em;
+    font-size: 0.8em;
+    background-color: #eee;
+    color: lightslategray;
+    border-top: 0.36rem lightslategray solid;
+}
+
+.footer-top-border {
+    border-bottom: 0.2rem #c4d2e2 solid;
+}
+
+.footer .author {
+    font-style: normal;
+    color: #c86b6b;
+    margin: 2em 0 0 0;
+}
+
+/*
+
+    TABLES
+
+ */
+
+table {
+    display: table;
+    width:100%;
+    border-collapse: collapse;
+    position: relative;
+}
+
+th,td {
+    padding: 0.5em;
+    text-align: center;
+}
+
+th {
+    background-color: #c86b6b;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+tr:nth-child(2n){
+    background-color: #eee;
+}
+
+td.clickable {
+    padding: 0;
+}
+
+td.clickable:hover {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+td.clickable a {
+    padding: 0.5em;
+    display: block;
+}
+
+/*
+
+    SEPARATORS
+
+ */
+
+.separator {
+    grid-area: separator;
+
+    background-color: #eee;
+    text-align: center;
+    font-size: 1.2em;
+    color: lightslategray;
+
+    border: #c4d2e2 solid;
+    border-width: 0.1em 0;
+}
+
+.inner-separator {
+    border: slategray solid;
+    border-width: 0.3em 0;
+    padding: 1em;
+}
+
+/*
+
+    LAYOUT
+
+ */
+
+/*
+    Each page is separated into two parts,
+    the second of which provides more details given
+    input in the first.
+
+    The grid setup I have here does not scale
+    well for small windows, but since responsiveness
+    is not a focus for this assignment, I'll leave it be.
+*/
+.two-part-container {
+    height: 100vh;
+    overflow: hidden;
+    display: grid;
+    grid: "header" auto
+          "part-A" 1fr
+          "separator" auto
+          "part-B" 1fr
+          / 1fr;
+}
+
+/*
+    Initially, the second part will often
+    be empty, and this layout is used instead.
+*/
+.one-part-container {
+    height: 100vh;
+    overflow: hidden;
+    display: grid;
+    grid: "header" auto
+          "part-A" 1fr
+          / 1fr;
+}
+
+.part-A {
+    grid-area: part-A;
+    overflow: auto;
+    text-align: center;
+}
+
+.part-B {
+    grid-area: part-B;
+    overflow: auto;
+}
+
+/*
+
+    PRODUCTS
+
+ */
+
+.product-lines {
+    justify-items: center;
+}
+
+.product-line {
+    display: inline-block;
+    background-color: #eee;
+    color: #333;
+}
+
+.product-line-title-bar {
+    background-color: #ddd;
+}
+
+.product-line-title {
+    display: inline-block;
+    background-color: #c86b6b;  /* faint blue: 525e8f */
+    color: #eee;
+    padding: 0.5em;
+    transition: 300ms ease;
+    width: 14em;
+}
+
+.product-line:hover .product-line-title {
+    background-color: #e38080;
+    transition: 100ms ease;
+    text-decoration: underline;
+}
+
+.product-line-description {
+    padding: 1em;
+}
+
+
+/*
+
+    PAYMENTS
+
+ */
+
+.customer-info {
+    text-align: center;
+    background-color: #ddd;
+}
+
+.customer-name {
+    color: gray;
+    font-size: 1.2em;
+    padding: 0.5em;
+}
+
+.customer-details {
+    color: lightslategray;
+    padding: 0.5em;
+    border-bottom: 0.2em lightslategray solid;
+}
+
+.customer-details em {
+    color: #333;
+    margin-right: 1em;
+}
