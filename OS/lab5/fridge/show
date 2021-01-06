@@ -1,0 +1,4 @@
+echo "Note:"
+cat note
+echo "Milk:"
+cat milk
