@@ -1,0 +1,122 @@
+body {
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+#container
+{
+    min-width:1050px;
+    margin: auto;
+}
+
+table, th, td {
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
+    border-left: 1px solid #f1f1f1;
+    border-right: 1px solid #f1f1f1;
+    border-collapse: collapse;
+    padding-right: 7px;
+    padding-left: 7px;
+}
+
+th {
+    background-color: #4C50AF;
+    color: white;
+    text-align: left;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+      
+table tr:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+
+table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+div.spaced {
+    padding-top: 10px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+}
+
+.rightSpaced {
+    padding-top: 1px;
+    padding-right: 15px;
+    padding-bottom: 2px;
+    padding-left: 0px;
+}
+
+.bigButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.bigButton:hover {
+    background-color: #008CBA;
+    color: lightgrey;
+}
+
+.smallButton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    text-align: center;
+    font-size: 16px;
+    margin: 2px 1px;
+    cursor: pointer;
+}
+
+div.floatLeftBox {
+    margin: 3px;
+    border: 1px solid #ccf;
+    float: left;
+    width: 120px;
+}
+
+div.floatLeftBox img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+div.desc {
+    padding: 5px;
+    text-align: center;
+}
+
+#debug {
+    color: red;
+}
+
+input[type=text] {
+    border: 2px solid grey; 
+    padding: 4px;
+    margin: 0 10px 0 0;
+    color: blue;
+    width: 40px;
+    font-size: 14px;
+    text-align: right;
+}
+
+
+/* .squaredTwo */
+input[type=checkbox] {
+    width: 18px;
+    height: 18px;
+    background: #000000;
+    cursor: pointer;
+}
+/* end .squaredTwo */

@@ -1,0 +1,161 @@
+<h1>Weather Forcast</h1>
+
+<ul id=forcast>
+    <li>
+        <h2>Monday 26th Aug</h2>
+        <p><img src="http://openweathermap.org/img/wn/10d@2x.png"></p>
+        <p>
+            26&#8451; <br>
+            Humidity: 100% <br>
+            Pressure: 1034hPa <br>
+            Speed: 9.01
+        </p>
+    </li>
+</ul>
+
+<table id=details>
+    <tr><td>Click on a day for more info</td></tr>
+</table>
+
+<style>
+    
+    li, table {
+        border: 1px solid black;
+        margin: 1em;
+    }
+    
+    li {
+        display: inline-block;
+        padding: 1em;
+    }
+    
+    table {
+        border-collapse: collapse;
+    }
+    
+    td {
+        padding: 1em;
+        border: solid 1px black;
+    }
+    
+    th {
+        border: solid 1px black;
+    }
+    
+    li:hover > h2 {
+        text-decoration: underline;
+    }
+    
+</style>
+
+<script>
+    
+    var daily = null;
+    var detailed = null;
+    
+    var cache = {};
+    
+    function get(path, callback) {
+        
+        var client = new XMLHttpRequest();
+        
+        client.open("GET", path);
+        
+        client.onload = function (){
+            data = JSON.parse(client.responseText);
+            console.log(data);
+            callback(data);
+        }
+        
+        client.send();
+        
+    }
+    
+    get("Detailed.json", setDetailed);
+    get("Daily.json", showDaily);
+    
+    function setDetailed(data) {
+        detailed = data;
+    }
+    
+    function showDaily(data) {
+        
+        daily = data;
+        var content = "";
+        
+        for (const dayID in daily.list) {
+            
+            const day = data.list[dayID];
+            const date = new Date(day.dt*1000).toDateString();
+            
+            content += "<li onclick=showDetailed("+dayID+")>"; 
+            content += "<h2>" + date + "</h2>";
+            
+            content += '<p><img src="http://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png"></p>';
+            
+            content+"<p>";
+            content += day.temp.day + "&#8451;<br>"
+            content += "Humidity: " + day.humidity + "%<br>";
+            content += "Pressure: " + day.pressure + "hPa<br>";
+            content += "Speed: " + day.speed;
+            content + "</p>";
+            
+            content += "</li>";
+        } 
+        
+        list = document.getElementById("forcast");
+        list.innerHTML = content;
+    }
+    
+    function showDetailed(dayID) {
+        
+        console.log(dayID);
+        
+        if (!(dayID in cache)) {
+            
+            cache[dayID] = [];
+            const targetDate = new Date(daily.list[dayID].dt*1000);
+            targetDate.setHours(0,0,0,0);
+            
+            for (const slotID in detailed.list) {
+                const slot = detailed.list[slotID];
+                const date = new Date(slot.dt*1000);
+                date.setHours(0,0,0,0);
+                if (date.getTime() === targetDate.getTime()) {
+                    cache[dayID].push(slotID);
+                }
+            }
+            
+        }
+        
+        content = "<tr>";
+        content += "<th>Datetime</th>"
+        content += "<th>Clouds</th>"
+        content += "<th>Temp</th>"
+        content += "<th>Humidity</th>"
+        content += "<th>Pressure</th>"
+        content += "<th>Wind Speed</th>"
+    
+        for (const slotID of cache[dayID]) {
+
+            const slot = detailed.list[slotID];
+            
+            content += "<tr>"; 
+            content += "<td>" + slot.dt_txt + "</td>";
+            
+            content += '<td><img src="http://openweathermap.org/img/wn/' + slot.weather[0].icon + '@2x.png"></td>';
+            
+            content += "<td>" + slot.main.temp + "&#8451;</td>"
+            content += "<td>" + slot.main.humidity + "%</td>";
+            content += "<td>" + slot.main.pressure + "hPa</td>";
+            content += "<td>" + slot.wind.speed + "</td>";
+
+            content += "</tr>";
+            
+        }
+        
+        table = document.getElementById("details");
+        table.innerHTML = content;
+    }
+    
+</script>

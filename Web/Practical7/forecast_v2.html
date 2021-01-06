@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">        
+</head>      
+    
+<body>
+
+<div id="id01"><h2>Weather information:</h2>
+    
+<p>Enter a number between 1 and 5 to choose a number of days to display:</p>
+
+<input type=text id="number1">
+
+<!-- These two buttons are used to call functions that display the stored JSON data -->    
+<button type="button" onclick="updateDailyForecast()">Show daily forecast</button>    
+<button type="button" onclick="updateDetailedForecast()">Show details</button>
+
+<br>
+    
+</div>
+
+<!-- This div is used to display debug info during the development process. It can be commented out of the 
+final solution. -->        
+<div id="debug"><br><br>Debug area<br><br></div>
+
+<!-- These divs will be used to display the daily and detailed info. -->        
+<div id="id02"></div>
+<div id="id03"></div>
+   
+
+<script>
+    
+<!-- These variables are used to store the data parsed from the json files. -->        
+var parsedDaily;
+var parsedDetails;
+    
+var xmlhttp1 = new XMLHttpRequest();
+var url = "Daily.json";   
+
+xmlhttp1.onreadystatechange = function() {
+    if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
+        
+        //Parse the JSON data to a JavaScript variable. 
+        parsedDaily = JSON.parse(xmlhttp1.responseText); 
+    }
+};
+
+xmlhttp1.open("GET", url, true);
+xmlhttp1.send();
+    
+    
+var xmlhttp2 = new XMLHttpRequest();
+var url = "Detailed.json";   
+
+xmlhttp2.onreadystatechange = function() {
+    if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+        
+        //Parse the JSON data to a JavaScript variable. 
+        parsedDetails = JSON.parse(xmlhttp2.responseText);   
+    }
+};
+
+xmlhttp2.open("GET", url, true);
+xmlhttp2.send();
+    
+     
+function dailyInfo(obj, daysToDisplay) {
+       
+    var weatherArray = obj.list;
+    
+    if(daysToDisplay > weatherArray.length){
+        document.getElementById('debug').innerHTML =
+                "We don't have data on that many days!";
+        return;
+    }
+    
+    var contact_out = "<table>";
+    contact_out += "<tr><th>Day</th><th>Summary</th><th>Icon</th><th>Min temp</th><th>Max temp</th><th>Pressure</th><th>Humidity</th><th>Windspeed</th><th>More</th></tr>";    
+    // Then iterate through the array and populate table rows and columns with the color names and hex values.
+    for (var i=0; i <daysToDisplay; i++) 
+    {    
+        var timeStamp = weatherArray[i].dt;
+        var date = new Date(timeStamp*1000).toDateString();
+        
+        var minTemp = weatherArray[i].temp.min;
+        var maxTemp = weatherArray[i].temp.max;  
+        var summaryObj = weatherArray[i].weather[0];
+        var weatherSummary = summaryObj.description;
+        var weatherIcon = summaryObj.icon;
+        
+        var dailyPressure = weatherArray[i].pressure;
+        var dailyHumidity = weatherArray[i].humidity;
+        var dailyWindSpeed = weatherArray[i].speed;
+        
+        contact_out += "<tr><td>" +
+        date +
+        "</td><td>" +
+        weatherSummary +
+        "</td><td>" +
+        weatherIcon +
+        "</td><td>" +
+        minTemp +
+        "</td><td>" +
+        maxTemp +
+        "</td><td>" +
+        dailyPressure +
+        "</td><td>" +
+        dailyHumidity +
+        "</td><td>" +
+        dailyWindSpeed +
+        "</td><td>" +            
+        "<button type=\"button\" onclick=\"updateDetailedForecast()\">More</button>"    
+        +"</td></tr>";
+    }
+    
+    // Close the table element.
+    contact_out += "</table>";
+    
+    return contact_out;
+    
+}
+    
+    
+function detailedInfo(obj) {
+       
+    var detailedArray = obj.list;
+
+    // This code writes the different contact info to a table and then adds the table to the div with id = "id03".
+    var contact_out = "<br><br><table>";
+    contact_out += "<tr><th>Time</th><th>Summary</th></tr>";    
+    // Then iterate through the array and populate table rows and columns with the color names and hex values.
+    for (var i=0; i <detailedArray.length; i++) 
+    {    
+        var dataTime = detailedArray[i].dt_txt;
+        var summaryObj = detailedArray[i].weather[0];
+        var weatherSummary = summaryObj.description;
+        
+        contact_out += "<tr><td>" +
+        dataTime +
+        "</td><td>" +
+        weatherSummary +
+        "</td></tr>";
+    }
+    
+    // Close the table element.
+    contact_out += "</table>";    
+    document.getElementById("id03").innerHTML = contact_out;
+    
+}
+    
+
+function updateDailyForecast(){
+        
+        var numberX = document.getElementById("number1").value;
+
+        var num1 = parseInt(numberX);
+    
+        if(num1 <= 5 && num1 >= 1) 
+        { 
+            document.getElementById('debug').innerHTML = "";
+            var info = dailyInfo(parsedDaily, num1);
+            document.getElementById("id02").innerHTML = info;
+        } 
+        else if(num1 < 1)
+        {
+            document.getElementById('debug').innerHTML =
+                "That number is to small!";
+            document.getElementById("id02").innerHTML = "";
+        }
+        else if(num1 > 5)
+        {
+            document.getElementById('debug').innerHTML =
+                "That number is to big!";
+            document.getElementById("id02").innerHTML = "";
+        }
+        else
+        {
+            document.getElementById('debug').innerHTML =
+                "That number does not make sense!";
+            document.getElementById("id02").innerHTML = "";
+        }
+          
+}
+    
+    
+function updateDetailedForecast(){
+
+    detailedInfo(parsedDetails);
+
+}
+    
+
+</script>
+
+</body>
+</html>

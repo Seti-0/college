@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">        
+</head>      
+    
+<body>
+
+<div id="id01"><h2>Weather information:</h2></div>
+
+<!-- These divs will be used to display the daily and detailed info. -->
+<div id="id02">Summary info</div>
+<div id="id03">Detailed info</div>
+   
+<script>
+    
+//These variables are used to store the data parsed from the json files.       
+var weatherArray;
+var detailedArray;
+    
+// This XMLHttpRequest is used to parse info from the first json file. 
+var xmlhttp1 = new XMLHttpRequest();
+var url = "Daily.json";   
+
+xmlhttp1.onreadystatechange = function() {
+    if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
+        
+        //Parse the JSON data to a JavaScript variable. 
+        var parsedDaily = JSON.parse(xmlhttp1.responseText);    
+        // This function is defined below and deals with the JSON data read from the file. 
+        dailyInfo(parsedDaily); 
+    }
+};
+
+xmlhttp1.open("GET", url, true);
+xmlhttp1.send();
+    
+// This XMLHttpRequest is used to parse info from the second json file. 
+var xmlhttp2 = new XMLHttpRequest();
+var url = "Detailed.json";   
+
+xmlhttp2.onreadystatechange = function() {
+    if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+        
+        //Parse the JSON data to a JavaScript variable. 
+        var parsedObj = JSON.parse(xmlhttp2.responseText);    
+        // This function is defined below and deals with the JSON data read from the file. 
+        detailedInfo(parsedObj); 
+    }
+};
+
+xmlhttp2.open("GET", url, true);
+xmlhttp2.send();
+    
+// This function is used to read the data stored from the daily json file and display it in a table. 
+function dailyInfo(obj) {
+       
+    weatherArray = obj.list;
+
+    var contact_out = "<table>";
+    contact_out += "<tr><th>Day</th><th>Summary</th><th>Icon</th><th>Min temp</th><th>Max temp</th><th>Pressure</th><th>Humidity</th><th>Windspeed</th></tr>";    
+    // Then iterate through the array and populate table rows and columns with the color names and hex values.
+    for (var i=0; i <weatherArray.length; i++) 
+    {    
+        var timeStamp = weatherArray[i].dt;
+        var date = new Date(timeStamp*1000).toDateString();
+        
+        var minTemp = weatherArray[i].temp.min;
+        var maxTemp = weatherArray[i].temp.max;  
+        var summaryObj = weatherArray[i].weather[0];
+        var weatherSummary = summaryObj.description;
+        var weatherIcon = summaryObj.icon;
+        
+        var dailyPressure = weatherArray[i].pressure;
+        var dailyHumidity = weatherArray[i].humidity;
+        var dailyWindSpeed = weatherArray[i].speed;
+        
+        contact_out += "<tr><td>" +
+        date +
+        "</td><td>" +
+        weatherSummary +
+        "</td><td>" +
+        weatherIcon +
+        "</td><td>" +
+        minTemp +
+        "</td><td>" +
+        maxTemp +
+        "</td><td>" +
+        dailyPressure +
+        "</td><td>" +
+        dailyHumidity +
+        "</td><td>" +
+        dailyWindSpeed +
+        "</td></tr>";
+    }
+    
+    // Close the table element.
+    contact_out += "</table>";    
+    document.getElementById("id02").innerHTML = contact_out;
+    
+}
+    
+    
+// This function is used to read the data stored from the detailed json file and display it in a table.     
+function detailedInfo(obj) {
+       
+    detailedArray = obj.list;
+
+    // This code writes the different contact info to a table and then adds the table to the div with id = "id03".
+    var contact_out = "<br><br><table>";
+    contact_out += "<tr><th>Time</th><th>Summary</th></tr>";    
+    // Then iterate through the array and populate table rows and columns with the color names and hex values.
+    for (var i=0; i <detailedArray.length; i++) 
+    {    
+        var dataTime = detailedArray[i].dt_txt;
+        var summaryObj = detailedArray[i].weather[0];
+        var weatherSummary = summaryObj.description;
+        
+        contact_out += "<tr><td>" +
+        dataTime +
+        "</td><td>" +
+        weatherSummary +
+        "</td></tr>";
+    }
+    
+    // Close the table element.
+    contact_out += "</table>";    
+    document.getElementById("id03").innerHTML = contact_out;
+    
+}  
+    
+</script>
+
+</body>
+</html>
