@@ -8,6 +8,12 @@ h1,h2,h3 {
     font-weight: bold;
 }
 
+/*
+
+    INITIAL LOADING
+
+*/
+
 .initial-container {
     display: grid;
     grid-template:
@@ -19,24 +25,35 @@ h1,h2,h3 {
     height: 100vh;
 }
 
-.timetable-container {
-    display: grid;
-    grid-template:
-        "toolbar" auto
-        "timetable" 1fr
-        / 1fr;
-    height: 100vh;
-}
-
 #loading-info {
     
     /* Show when loading begins */
     visibility: hidden;
 
+    text-align: center;
+    
     grid-area: loading;
     justify-self: center;
     color: #777;
 }
+
+.error-title {
+    margin: 1em;
+}
+
+.error-message {
+    margin: 1em;
+    color: #a55;
+    font-size: 1.3em;
+}
+
+.error-suggestion {
+    margin: 1em;
+}
+
+/*
+    TOOLBAR
+*/
 
 #toolbar {
     
@@ -71,6 +88,21 @@ h1,h2,h3 {
     display: none;
 }
 
+/*
+    TIMETABLE
+*/
+
+.timetable-container {
+    display: grid;
+    /* Fix the toolbar above the timetable */
+    grid-template:
+        "toolbar" auto
+        "timetable" 1fr
+        / 1fr;
+    height: 100vh;
+}
+
+
 .timetable-wrapper {
     overflow: auto;
     grid-area: timetable;
@@ -96,6 +128,13 @@ h1,h2,h3 {
     z-index: 1;
 }
 
+.message-slot {
+    text-align: center;
+    margin: 2em;
+    color: #555;
+    font-style: italic;
+}
+
 .slot  {
     background: #FDF6F3;
     border: solid #268BD2;
@@ -114,10 +153,6 @@ h1,h2,h3 {
     align-items: center;
 }
 
-.slot:hover {
-    border-color: #69C33B;
-}
-
 .time {
     position: sticky;
     top: 1.2em;
@@ -134,15 +169,12 @@ h1,h2,h3 {
 .sessions {
     text-align: start;
     grid-area: "sessions";
-    columns: 1;
-    column-gap: 0;
 }
 
 .session {
     display: inline-block;
     border: 2px solid #268BD2;
     margin: 0.4em 0.4em;
-    //padding: 0.4em 1em;
 }
 
 .session:hover {

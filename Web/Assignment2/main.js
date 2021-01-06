@@ -1,7 +1,14 @@
 /*eslint-env es6,browser*/
 
+// This document is way over-commented, because this was for an assignment.
+
 window.onload = loadData;
 
+/** 
+* Sends a request for the scheduling data. When the request is
+* complete, if it is successful, the timetable will be loaded.
+* (If not, an error message will show)
+*/
 function loadData() {
 
     const loadinginfo = document.getElementById("loading-info");
@@ -13,24 +20,82 @@ function loadData() {
     client.open("GET", "scheduling.json");
 
     client.onprogress = function(event) {
-        updateProgress(event.loaded/event.total);
+        updateProgress(progressDisplay, event.loaded/event.total);
     }
 
+    // Note: onerror is only called for errors where
+    // no HTML response made it at all - it is not called
+    // when the HTML returns with, say, code 404.
+    
+    // An error code in the response still needs to be
+    // handled in onload.
+    
+    client.onerror = function() {
+        showError(loadinginfo);
+    }
+    
     client.onload = function() {
-        showInitialSelection(client, loadinginfo);    
+        checkResponse(client, loadinginfo);  
     }
-
+    
     client.send();
-
-    function updateProgress(p) {
-        progressDisplay.innerHTML = (p*100).toFixed(2);
-    }
 
 }
 
-function showInitialSelection(client, loadinginfo) {
+/** 
+* Sets the text of a given element to a formatted proportion.
+*/
+function updateProgress(progressDisplay, p) {
+    progressDisplay.innerHTML = (p*100).toFixed(2);
+}
 
-    const data = JSON.parse(client.responseText);
+/**
+* Sets the content of a given element to a styled error message
+* with a title, message content, and user suggestion.
+*/
+function showError(loadinginfo, text) {
+    
+    var content = "<h4 class=error-title>";
+    content += "Failed to load scheduling data.";
+    content += "</h4>";
+    
+    if (text !== undefined) {
+        content += "<p class=error-message>";
+        content += text;
+        content += "</p>";   
+    }
+    
+    content += "<p class=error-suggestion>";
+    content += "Reload the page to try again.";
+    content += "</p>";
+    
+    loadinginfo.innerHTML = content;
+    
+}
+
+/**
+* Loads the timetable or displays an error message, depending 
+* on the HTTP status of the client.
+*/
+function checkResponse(client, loadinginfo) {
+    
+    if (client.status === 200) {
+        showInitialSelection(client.responseText, loadinginfo);
+    }
+    else {
+        const message = client.status + " - " + client.statusText;
+        showError(loadinginfo, message);
+    }
+}
+
+/**
+* Shows an initial toolbar with date & time selection 
+* and a "submit" button. Selecting a day is mandatory, selecting
+* a time is not.
+*/
+function showInitialSelection(text, loadinginfo) {
+
+    const data = JSON.parse(text);
 
     const datepicker = document.getElementById("datepicker");
     const timepicker = document.getElementById("timepicker");
@@ -51,6 +116,14 @@ function showInitialSelection(client, loadinginfo) {
     }
 }
 
+/**
+* Switches the layout of the page and shows the timetable.
+*
+* The submit button is hidden at this point - the timetable is updated directly
+* on a change of value in the toolbar elements.
+*
+* A filter element is configured and added to the toolbar.
+*/
 function switchToTimetableView(showButton, datepicker, timepicker, loadinginfo, data) {
 
     /*
@@ -66,9 +139,9 @@ function switchToTimetableView(showButton, datepicker, timepicker, loadinginfo, 
 
     /*
         Change toolbar behaviour:
-          - remote show button
-          - update timetable on select box change
-          - show filter radio set
+          - remove show button
+          - update timetable on select-box change
+          - show filter radio set, update timetable on radio change
     */
 
     showButton.style.display = "none";
@@ -87,6 +160,7 @@ function switchToTimetableView(showButton, datepicker, timepicker, loadinginfo, 
     function applyFilter() {
 
         var value = null;
+        // Is there an easier way to get the checked radio button than looping?
         for (const item of document.getElementsByName("filter")) {
             if (item.checked) {
                 value = item.value;
@@ -125,13 +199,17 @@ function filterOther(session) {
     return session.type !== "paper";
 }
 
+
+/** 
+* Update the options for the date select using the scheduling data.
+*/
 function updateDatepicker(datepicker, data) {
 
     var content = "";
 
     // I only noticed on re-reading the assignment that this
     // isn't supposed to be an option.
-    //content += "<option value=any>Any</option>";
+    content += "<option value=any>Any</option>";
 
     for (const dayID in data) {
 
@@ -143,8 +221,13 @@ function updateDatepicker(datepicker, data) {
     }
 
     datepicker.innerHTML = content;
+    
 }
 
+/** 
+* Update the options for the time select using the scheduling data,
+* given a date selected.
+*/
 function updateTimePicker(timepicker, datepicker, data) {
 
     var content = "<option value=any>Any</option>";
@@ -168,6 +251,18 @@ function updateTimePicker(timepicker, datepicker, data) {
 
 }
 
+/*
+
+    CREATING THE TIMETABLE
+    
+    (This is done every time a new day/time/filter is selected)
+
+*/
+
+/** 
+* Construct the timetable given a day, slot and filter predicate for sessions
+* The day or slot can be "any", this will mean all items of that type are shown.
+*/
 function showTimetable(dayID, slotID, data, filter) {
 
     var content = "";
@@ -182,10 +277,15 @@ function showTimetable(dayID, slotID, data, filter) {
     }
 
     const timetable = document.getElementById("timetable");
+    
     timetable.innerHTML = content;
 
 }
 
+/**
+* Create a html string for a list element corresponding to a day. Optionally
+* restrict the output to a specific time and with a filter predicate for the sessions.
+*/
 function createDay(data, slotID, filter) {
 
     var content = "<li class=day>";
@@ -194,14 +294,25 @@ function createDay(data, slotID, filter) {
     content += data.date + " - " + data.day;
     content += "</h2>";
 
+    var items = "";
+    
     if (slotID === "any") {
         for (const slotID in data.slots) {
             const slot = data.slots[slotID];
-            content += createSlot(slot, filter);   
+            items += createSlot(slot, filter);   
         }   
     } else {
         const slot = data.slots[slotID];
-        content += createSlot(slot, filter);
+        items += createSlot(slot, filter);
+    }
+    
+    if (items === "") {
+        content += "<li class=message-slot><p>"
+        content += "No sessions found of the requested type."
+        content += "</p></li>"
+    }
+    else {
+        content += items;
     }
 
     content += "</li>";
@@ -209,6 +320,11 @@ function createDay(data, slotID, filter) {
 
 }
 
+/**
+* Create a html string for an element corresponding to a slot. 
+* Optionally restrict the output with a filter predicate for the sessions.
+* If no sessions exist after filtering, and empty string is returned.
+*/
 function createSlot(slot, filter) {
 
     var sessions = slot.sessions;
@@ -236,6 +352,11 @@ function createSlot(slot, filter) {
 
 }
 
+/**
+* Create a html string for a list element corresponding to a single session - 
+* this includes both the "title" element that is always displayed, and
+* and the "more info" element that is only displayed when the title is clicked on.
+*/
 function createSession(session) {
 
     var content = "<li class=session onclick=\"toggleSubmissionDetails(this)\">";
@@ -269,9 +390,7 @@ function createSession(session) {
 
     }
     else {
-
         content += "<h5 class=submissions-title>(There are no submissions for this session)</h5>";
-
     }
 
     content += "</div>";
@@ -281,6 +400,9 @@ function createSession(session) {
 
 }
 
+/**
+* Create a html string for a list element corresponding to a single submission.
+*/
 function createSubmission(submission) {
 
     var content = "<li class=submission>";
@@ -293,10 +415,32 @@ function createSubmission(submission) {
 
 }
 
+/*
+
+    SHOWING MORE INFO
+    
+    Each session element has a hidden "submissions" element 
+    with more detail on the session.
+    
+    When the session is clicked on that element should become visible.
+
+*/
+
+
+// Only one submissions element should be visible at one time.
+// This will keep track of the current visible element.
 var lastOpen = null;
 
+// eslint does not know that this next function is used in the js-written html above.
 /* eslint-disable no-unused-vars */
+
+/**
+* Searches for a subelement of the given element
+* with the "submissions" class. Toggles that subelement's visibility.
+* Hides the previous element made visible using this method, if one exists.
+*/
 function toggleSubmissionDetails(element) {
+
 /* eslint-enable no-unused-vars */
 
     const candidates = element.getElementsByClassName("submissions");
