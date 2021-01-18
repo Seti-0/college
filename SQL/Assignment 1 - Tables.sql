@@ -1,8 +1,7 @@
-
 /* Clear the database */
-DROP DATABASE IF EXISTS cosson16498802;
-CREATE DATABASE cosson16498802;
-USE cosson16498802;
+DROP DATABASE IF EXISTS mydb;
+CREATE DATABASE mydb;
+USE mydb;
 
 /*
 

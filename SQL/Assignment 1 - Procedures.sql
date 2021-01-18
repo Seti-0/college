@@ -1,4 +1,4 @@
-USE cosson16498802;
+USE mydb;
 
 DROP PROCEDURE IF EXISTS `1 - Hospital by ID`;
 DROP PROCEDURE IF EXISTS `2 - Hospital by Name`;

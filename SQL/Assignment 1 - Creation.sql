@@ -1,4 +1,4 @@
-USE cosson16498802;
+USE mydb;
 
 DROP PROCEDURE IF EXISTS `New Address`;
 DROP PROCEDURE IF EXISTS `New Application`;
