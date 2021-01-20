@@ -1,0 +1,7 @@
+# General Eclipse things.
+/.metadata/
+.settings/
+.classpath
+
+# A project for idle experiments not worth keeping.
+Experiments/
