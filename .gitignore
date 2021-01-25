@@ -6,3 +6,6 @@
 
 # JetBrains
 .idea/
+
+# Day to day misc, not worth keeping.
+DataScience/Misc.ipynb
