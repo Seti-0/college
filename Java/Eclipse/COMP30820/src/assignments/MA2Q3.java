@@ -2,7 +2,7 @@ package assignments;
 
 import java.util.Scanner;
 
-public class MA3Q3 {
+public class MA2Q3 {
 
 	public static void main(String[] args) {
 		
