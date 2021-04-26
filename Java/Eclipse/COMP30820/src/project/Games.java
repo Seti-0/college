@@ -3,57 +3,55 @@ package project;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Supplier;
 
 /**
  * Maintains a list of games keyed by name. 
  * 
- * @see #register(String, Supplier)
- * @see #create(String)
+ * @see #add(String, Game)
+ * @see #get(String)
  * @see #getNames()
  * @see Game
  */
 public class Games {
 
-	private static HashMap<String, Supplier<Game>> suppliers = new HashMap<>();
+	private static HashMap<String, Game> games = new HashMap<>();
 	
 	/**
-	 * Register a new game.
+	 * Add a new game.
 	 * @param name The name of the game. If a game of this name already exists,
 	 * it is replaced.
-	 * @param supplier A supplier with which a new insteance of this game can
-	 * be created.
+	 * @param game The new game.
 	 */
-	public static void register(String name, Supplier<Game> supplier) {
+	public static void add(String name, Game game) {
 		
-		suppliers.put(name, supplier);
+		games.put(name, game);
 		
 	}
 	
 	/**
-	 * Retrieve a list of all currently registered game names.
+	 * Retrieve a list of all currently available game names.
 	 */
 	public static Set<String> getNames() {
 		
-		return new HashSet<String>(suppliers.keySet());
+		return new HashSet<String>(games.keySet());
 		
 	}
 	
 	/**
 	 * Create a new game.
 	 * 
-	 * @param name The name the game was registered with.
+	 * @param name The name the game was added with.
 	 * @throws IllegalArgumentException if the name is
 	 * not recognized.
 	 */
-	public static Game create(String name) {
+	public static Game get(String name) {
 		
-		Supplier<Game> supplier = suppliers.get(name);
+	    Game game = games.get(name);
 		
-		if (supplier == null)
+		if (game == null)
 			throw new IllegalArgumentException("Unrecognized game: " + name);
 		
-		return supplier.get();
+		return game;
 		
 	}
 	

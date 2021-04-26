@@ -34,7 +34,7 @@ public abstract class Scene {
 		this.out = Main.getOutput();
 		
 	}
-	
+
 	/**
 	 * Pause the application and wait for a user prompt to continue.
 	 */

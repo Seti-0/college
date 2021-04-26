@@ -108,7 +108,7 @@ public class Menu extends Scene {
 			if (selection == null)
 				return;
 			
-			currentPlayer.play(Games.create(selection));	
+			currentPlayer.play(Games.get(selection));	
 			
 			out.println();
 			

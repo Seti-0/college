@@ -70,9 +70,9 @@ public class Main {
 		
 		// So I'm just listing them all.
 		
-		Games.register("Rock, Paper, Scissors", RockPaperScissors::new);
-		Games.register("Nim", Nim::new);
-		Games.register("Pazaak", Pazaak::new);
+		Games.add("Rock, Paper, Scissors", new RockPaperScissors());
+		Games.add("Nim", new Nim());
+		Games.add("Pazaak", new Pazaak());
 		
 		Players.register("Normal", Player::new);
 		Players.register("Honour", Honour::new);
@@ -97,8 +97,8 @@ public class Main {
 	
 	private static void setTitle(String name, String title) {
 		
-		Player player = new Special(name, title);
-		Players.add(player, "Special");
+		Special player = (Special) Players.add(name, "Special");
+		player.setTitle(title);
 		
 	}
 

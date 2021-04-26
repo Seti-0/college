@@ -119,25 +119,13 @@ public class Players {
 		Player player = supplier.get();
 		player.setName(name);
 		
-		players.put(name, player);
-		playerTypes.put(name, playerType);
+		add(player, playerType);
 		
 		return player;
 		
 	}
 	
-	/**
-	 * Register an existing player.
-	 * 
-	 * @param player An existing player. If a player of the same name already exists,
-	 * this one will replace it.
-	 * @param playerType The type the player should be associated with.
-	 * Careful - there is no check on whether the type given is suitable!
-	 * 
-	 * @see #add(String, String)
-	 * @see #get(String)
-	 */
-	public static void add(Player player, String playerType) {
+	private static void add(Player player, String playerType) {
 		
 		players.put(player.getName(), player);
 		playerTypes.put(player.getName(), playerType);
