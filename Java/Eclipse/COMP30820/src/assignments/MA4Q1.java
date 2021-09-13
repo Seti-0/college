@@ -24,11 +24,11 @@ public class MA4Q1 {
 			
 		} catch (FileNotFoundException e) {
 			
-			System.out.println("File not found: '%s'".formatted(args[0]));
+			System.out.println(String.format("File not found: '%s'", args[0]));
 			
 		} catch (IOException e) {
 			
-			System.out.println("Unable to read file: '%s'".formatted(args[0]));
+			System.out.println(String.format("Unable to read file: '%s'", args[0]));
 			
 		}
 		

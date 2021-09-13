@@ -1,10 +1,15 @@
-package project;
+package base;
+
+import players.Ghost;
+import players.Honour;
+import players.Special;
+import scenes.Menu;
+import scenes.Nim;
+import scenes.Pazaak;
+import scenes.RockPaperScissors;
 
 import java.io.PrintWriter;
 import java.util.Scanner;
-
-import project.players.*;
-import project.scenes.*;
 
 /**
  * Contains the entry point to the application. Also offers
@@ -74,8 +79,8 @@ public class Main {
 		Games.add("Nim", new Nim());
 		Games.add("Pazaak", new Pazaak());
 		
-		Players.register("Normal", () -> new Player());
-		Players.register("Honour", () -> new Honour());
+		Players.register("Normal", Player::new);
+		Players.register("Honour", Honour::new);
 		Players.register("Ghost", () -> new Ghost());
 		
 		// Register a hidden player type. These serve no particular purpose
