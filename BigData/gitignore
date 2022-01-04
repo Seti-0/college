@@ -1,0 +1,4 @@
+# Git repository we used for setting up some of the containers:
+# https://github.com/big-data-europe/docker-hadoop.git
+
+/docker-hadoop
