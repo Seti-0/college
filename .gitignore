@@ -12,3 +12,6 @@ __pycache__
 
 # Day to day misc, not worth keeping.
 DataScience/Misc.ipynb
+
+# Not sure...
+.DS_Store
