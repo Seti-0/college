@@ -1,0 +1,11 @@
+copy and paste code below into new SQL request to create the stored procedure for the test database.
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_weather_data`()
+BEGIN
+SET @max=(SELECT max(date_time) FROM dublin_weather);
+SELECT date(date_time) as date, ROUND(feels_like - 270) as temp, main_description as description FROM dublin_weather
+WHERE date_time=@max
+UNION
+SELECT date(date_time) as date, ROUND(feels_like - 270) as temp, main_description as description FROM five_day_forecast
+WHERE HOUR(date_time) = 12;
+END

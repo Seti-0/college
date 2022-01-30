@@ -1,0 +1,38 @@
+article {
+    padding: 1em 2em 2em 2em;
+}
+h1 {
+    color: black;
+}
+
+
+h2 {
+    text-align: left;
+    color: #ccc;
+    font-size: 2em;
+    font-style: italic;
+    margin: 0.4em 0 1em 0;
+}
+
+h3 {
+    font-size: 1.2em;
+    color: mediumseagreen;
+    margin: 0.2em 0;
+}
+
+article p {
+    color: #444;
+    padding-bottom: 1.3em;
+}
+
+footer {
+    background-color: mediumseagreen;
+    color: white;
+    text-align: center;
+    padding: 2em;
+}
+
+#authors {
+    margin-bottom: 1em;
+}
+

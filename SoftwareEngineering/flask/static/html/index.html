@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dublin Bikes</title>
+    <link rel="stylesheet" type="text/css" href="static/style/reset.css">
+    <link rel="stylesheet" type="text/css" href="static/style/main.css">
+    <script src="static/js/mustache.js"></script>
+    <script src="static/js/markers.js"></script>
+    <script src="static/js/routes.js"></script>
+    <script src="static/js/main.js"></script>
+    <!--Charting toolboxes-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- It's important these scripts be deferred, since they references parts later in the DOM -->
+    <script src="static/js/weather.js" defer></script>
+    <script src="static/js/datetimes.js" defer></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFL_vJaNtdU1T9pRxy2v_7s3T7dXOTboc&callback=initMap&libraries=places" defer></script>
+</head>
+<body>
+<div id=header-1>
+    <h1>Dublin Bikes</h1>
+    <!-- Weather display -->
+    <div id=weather-box>
+        <!--Placeholder text while information loads -->
+        Loading weather...
+    </div>
+</div>
+<div id="header-2">
+    <!-- Time selection - allows the display of future predictions -->
+    <label for="date">Date:</label>
+    <select id="date" class="future-date" data-time-id="time" name="date"></select>
+    <label for="time">Time:</label>
+    <select id="time" class="future-time" name="time"></select>
+    <button class="rounded-button" onclick="displayPredictions()">Display Predictions</button>
+    <button class="rounded-button" onclick="resetMarkersToCurrent()">Reset to Present</button>
+</div>
+<div id="header-3">
+    <label id="start-label" for="start-location">From:</label>
+    <input id="start-location" class="location-search" placeholder="Search" type="text" />
+    <!-- Route planner - allows the user to select a start and end point -->
+    <button id="show-planner-button" class="rounded-button" onclick="showPlanner()">Plan Route</button>
+    <div id="route-content">
+        <label for="end-location">To:</label>
+        <input id="end-location" class="location-search" placeholder="End Location" type="text" />
+        <button id="plan-route" class="rounded-button highlight">Show Route</button>
+        <button id="hide-planner-button" class="rounded-button" onclick="dismissPlanner()">Hide Route Planner</button>
+    </div>
+</div>
+<!-- Loading animation only visible while calling predictions, can be accessed at any time by switching display to block -->
+<div id="loader"></div>
+<div id=map></div>
+<div id="charts-content">
+    <p id="no-charts-message">Select a station to view charts</p>
+    <div id="chartInfo"></div>
+    <div id="chart_div_average"></div>
+    <div id="chart_div_today"></div>
+</div>
+<div id="footer">
+    <!-- Charts toggle -->
+    <button id="show-chart-button" onclick="showCharts()">Show Charts</button>
+    <!-- Buttons for toggling whether the marker displays availability or free spaces -->
+    <div id="marker-buttons">
+        <button id=show-bikes class="marker-button-active" onclick="toggleLabels('bikes')">
+            Available Bikes
+        </button>
+        <button id=show-stands class="marker-button-inactive" onclick="toggleLabels('stands')">
+            Free Spaces
+        </button>
+    </div>
+    <a href="about">About</a>
+</div>
+</body>
+</html>

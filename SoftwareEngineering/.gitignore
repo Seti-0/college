@@ -1,0 +1,14 @@
+# Temporary files
+log.txt
+
+# User specific config
+config.py
+test_config.py
+
+# Python
+__pycache__
+
+# IDEs
+.vscode
+.ipynb_checkpoints
+.idea

@@ -1,0 +1,335 @@
+/*
+
+    Home Page
+
+ */
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    display: grid;
+    grid: "header-1" auto
+        "header-2" auto
+        "header-3" auto
+        "map" 1fr
+        "charts" auto
+        "footer" auto
+        / 1fr;
+}
+
+.rounded-button {
+    padding: 0.3em 1em;
+    border-radius: 0.2em;
+    margin: 0.7em 0.5em 0 0;
+}
+
+.highlight {
+    color: white;
+    background-color: dodgerblue;
+}
+
+#map {
+    grid-area: map;
+}
+
+/*
+
+    Header 1
+
+ */
+
+#header-1 {
+    display: flex;
+    flex-wrap: wrap;
+    grid-area: header-1;
+    padding: 0.5em 1em;
+    align-items: baseline;
+    border-bottom: dodgerblue solid 0.1em;
+}
+
+h1 {
+    display: inline-block;
+    font-size: 1.3em;
+    font-family: "Trebuchet MS"
+}
+
+/*
+
+    Weather
+
+ */
+
+#weather-box {
+    margin-left: auto;
+    color: #777;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+}
+
+/*
+
+    Search box
+
+ */
+
+#search-container {
+    width: 30%;
+    text-align: right;
+}
+
+#search-button {
+    padding: 0.3em;
+}
+
+/*
+
+    Markers
+
+ */
+
+.marker-label {
+    color: white;
+    font-weight: bold;
+}
+
+/*
+
+    Popup station info window
+
+ */
+
+.station-header {
+    font-weight: normal;
+    font-size: 1.5em;
+    color: #111;
+    padding: 0;
+}
+
+.station-status {
+    display: inline-block;
+    font-size: 0.9em;
+    color: white;
+    margin: 0.3em;
+    padding: 0.3em;
+}
+
+.station-open {
+    background-color: forestgreen;
+}
+
+.station-closed {
+    background-color: red;
+}
+
+.station-availability {
+    padding: 0;
+    color: lightslategray;
+    font-size: 1.1em;
+}
+
+.station-bikes {
+    color: mediumseagreen;
+}
+
+.station-spaces {
+    color: dodgerblue;
+}
+
+/*
+
+    Subheaders
+
+ */
+
+#header-2 {
+    background-color: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    z-index: 2;
+    padding: 0 1em 0 1em;
+    grid-area: header-2;
+}
+
+#header-3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    box-shadow: #444 1px 1px 5px;
+    z-index: 1;
+    padding: 0 1em 0.7em 1em;
+    grid-area: header-3;
+}
+
+label {
+    font-size: 0.8em;
+    margin: 0.7em 0.5em 0 0;
+}
+
+select {
+    margin: 0.7em 0.5em 0 0;
+}
+
+#route-content {
+    display: none;
+    align-items: baseline;
+}
+
+input {
+    margin-right: 0.5em;
+}
+
+#show-planner-button {
+    background-color: dodgerblue;
+    color: white;
+}
+
+#plan-route {
+    background-color: dodgerblue;
+    color: white;
+}
+
+#start-label {
+    display: none;
+}
+
+/*
+  
+  Prediction loading symbol
+  
+*/
+  
+/*Boilerplate code for loader from w3 schools*/
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+    display: none;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*
+
+    Charts
+
+ */
+
+#charts-content {
+    display: none;
+    margin-top: 0.5em;
+    text-align: center;
+}
+
+#no-charts-message {
+    margin-top: 1.4em;
+    color: lightgrey;
+}
+
+#chart_div_average{
+    display: inline-block;
+    width: 45%;
+}
+
+#chart_div_today{
+    display: inline-block;
+    width: 45%;
+}
+
+/*
+
+    Footer
+
+*/
+
+#footer{
+    display: flex;
+    grid-area: footer;
+    padding: 0.5em 1em;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: #444 1px 1px 5px;
+    z-index: 1;
+}
+
+/*
+
+    Marker Toggle Buttons
+    (This is a bit convoluted)
+
+ */
+
+#marker-buttons {
+    border-radius: 0.4em;
+    background-color: #ddd;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+
+#marker-buttons button {
+    border: none;
+    padding: 0.2em 1em;
+    display: inline-block;
+}
+
+.marker-button-active {
+    border-radius: 0.4em;
+    color: white;
+}
+
+#show-bikes.marker-button-active{
+    background-color: mediumseagreen;
+}
+
+#show-stands.marker-button-active {
+    background-color: dodgerblue;
+}
+
+.marker-button-inactive {
+    background: none;
+}
+
+#show-bikes.marker-button-inactive {
+    color: mediumseagreen;
+}
+
+#show-stands.marker-button-inactive {
+    color: dodgerblue;
+}
+
+/*
+
+    Chart button and About Link
+
+*/
+
+#show-chart-button {
+    padding: 0.3em 1em;
+    border-radius: 0.2em;
+}

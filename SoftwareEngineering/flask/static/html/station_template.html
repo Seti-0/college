@@ -1,0 +1,22 @@
+<h1 class=station-header>{{name}}</h1>
+{{#open}}
+<div class="station-status station-open">OPEN</div>
+{{/open}}
+{{^open}}
+<div class="station-status station-closed">CLOSED</div>
+{{/open}}
+<p class=station-availability>
+    <span class=station-bikes>
+        {{available_bikes}} available bikes
+    </span>
+    /
+    <span class=station-spaces>
+        {{free_spaces}} free spaces
+    </span>
+</p>
+<p class=payment-info>
+    This station
+    {{#bank}} has {{/bank}}
+    {{^bank}} does not have {{/bank}}
+    a payment terminal.
+</p>
