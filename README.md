@@ -23,8 +23,8 @@ Group repository: https://github.com/team-terminus17/dublin_bus
 
 # Notebooks
 
-Implementing/testing a simplified Pandas Series and DataFrame:
+Implementing/testing a simplified Pandas Series and DataFrame:\
 https://github.com/Seti-0/college/blob/main/OOP/Assignment2/Panda-v2.ipynb
 
-Detailed comparison between some simple machine learning models with a COVID dataset:
+Detailed comparison between some simple machine learning models with a COVID dataset:\
 https://github.com/Seti-0/college/blob/main/DataScience/assignment2/Assignment%202-Copy1.ipynb
